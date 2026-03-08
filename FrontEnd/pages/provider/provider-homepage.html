@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Provider | Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png">
+    <link rel="stylesheet" href="/FrontEnd/CSS/prvider/provider-homepage.css">
+    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <main id="provider-dashboard">
+
+        <h1>Service Provider Dashboard</h1>
+
+        <div class="dashboard-top">
+            <button class="availability-btn" onclick="openAvailabilityModal()">
+                <i class="fas fa-toggle-on"></i> Change Availability
+            </button>
+        </div>
+
+        <!-- ===== Stats Section ===== -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <i class="fas fa-toolbox"></i>
+                <h2>Total Services</h2>
+                <p>8</p>
+            </div>
+
+            <div class="stat-card">
+                <i class="fas fa-calendar-check"></i>
+                <h2>Total Bookings</h2>
+                <p>56</p>
+            </div>
+
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <h2>Average Rating</h2>
+                <p>4.7 ⭐</p>
+            </div>
+
+        </section>
+
+        <!-- ===== Recent Bookings ===== -->
+        <section class="recent">
+            <h3>Recent Bookings</h3>
+
+            <div class="booking-card">
+                <span>Home Cleaning</span>
+                <span>Michael</span>
+                <span class="status completed">Completed</span>
+            </div>
+
+            <div class="booking-card">
+                <span>AC Repair</span>
+                <span>David</span>
+                <span class="status pending">Pending</span>
+            </div>
+
+            <div class="booking-card">
+                <span>Electrical Wiring</span>
+                <span>Chris</span>
+                <span class="status cancelled">Cancelled</span>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Availability Modal -->
+    <div id="availabilityModal" class="modal">
+        <div class="modal-content">
+            <h3>Change Availability</h3>
+
+            <select id="availabilitySelect">
+                <option value="Available">Available</option>
+                <option value="Unavailable">Unavailable</option>
+            </select>
+
+            <div class="modal-buttons">
+                <button class="save-btn" onclick="saveAvailability()">Save</button>
+                <button class="cancel-btn" onclick="closeAvailabilityModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+<script src="/FrontEnd/JS/provider-sidebar.js"></script>
+<script src="/FrontEnd/JS/provider/provider.homepage.js"></script>
+</body>
+</html>

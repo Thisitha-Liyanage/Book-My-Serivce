@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Customers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/FrontEnd/CSS/admin/admin-customerpage.css">
+    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="/FrontEnd/Assest/logo.png">
+</head>
+<body>
+
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h1>Customers</h1>
+
+        <!-- Search -->
+        <div class="table-controls">
+            <input type="text" id="searchInput" placeholder="Search customer...">
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Province</th>
+                        <th>District</th>
+                        <th>Village</th>
+                        <th>Action</th> <!-- NEW -->
+                    </tr>
+                </thead>
+
+                <tbody id="customerTable">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Add Customer Modal -->
+    <div class="modal" id="addModal">
+        <div class="modal-box">
+            <h3>Add Customer</h3>
+
+            <input placeholder="Customer ID">
+            <input placeholder="Full Name">
+            <input placeholder="Email">
+            <input placeholder="Phone Number">
+
+            <select>
+                <option>Active</option>
+                <option>Inactive</option>
+            </select>
+
+            <div class="form-actions">
+                <button class="btn btn-save" onclick="closeAddModal()">Save</button>
+                <button class="btn btn-cancel" onclick="closeAddModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/FrontEnd/JS/admin-sidebar.js"></script>
+    <script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+    <script src="/FrontEnd/JS/admin/admin-customerpage.js"></script>
+
+</body>
+</html>

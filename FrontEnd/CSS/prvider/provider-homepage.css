@@ -1,0 +1,201 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f5f5f5;
+}
+section::-webkit-scrollbar {
+    width: 8px;
+}
+
+section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+section::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1e293b, #475569);
+    border-radius: 10px;
+}
+
+section::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #0f172a, #334155);
+}
+
+#provider-dashboard {
+    margin-left: 15vw;
+    padding: 5vh 3vw;
+}
+
+#provider-dashboard h1 {
+    font-size: 2.2rem;
+    color: #0E0927;
+    margin-bottom: 3vh;
+}
+
+/* ===== Stats Cards ===== */
+
+.stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 4vh;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 250px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card i {
+    font-size: 2rem;
+    color: #1B1464;
+    margin-bottom: 1rem;
+}
+
+.stat-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0E0927;
+}
+
+/* ===== Recent Bookings ===== */
+
+.recent {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.recent h3 {
+    margin-bottom: 2vh;
+}
+
+.booking-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+    align-items: center;
+}
+
+/* ===== Status Styles ===== */
+
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.completed {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.cancelled {
+    background: #fecaca;
+    color: #991b1b;
+}
+/* ===== Top Right Button ===== */
+
+.dashboard-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2vh;
+}
+
+.availability-btn {
+    background: linear-gradient(180deg, #0E0927, #1B1464);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.availability-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ===== Modal ===== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.modal-content h3 {
+    margin-bottom: 1.5rem;
+}
+
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-btn {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}

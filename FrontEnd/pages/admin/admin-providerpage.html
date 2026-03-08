@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookMyService | Providers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/FrontEnd/CSS/admin/admin-providerpage.css">
+    <link rel="icon" href="/FrontEnd/Assest/logo.png">
+    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h1>Service Providers</h1>
+
+        <div class="table-controls">
+            <input type="text" id="searchInput" placeholder="Search provider...">
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Province</th>
+                        <th>District</th>
+                        <th>Village</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody id="providerTable">
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>0123456789</td>
+                        <td>Western</td>
+                        <td>Colombo</td>
+                        <td>Galle</td>
+                        <td><span class="status status-available">Available</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>0771234567</td>
+                        <td>Southern</td>
+                        <td>Galle</td>
+                        <td>Poddala</td>
+                        <td><span class="status status-unavailable">Unavailable</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+
+    <script src="/FrontEnd/JS/admin-sidebar.js"></script>
+    <script src="/FrontEnd/JS/admin/admin-provider.js"></script>
+</body>
+</html>

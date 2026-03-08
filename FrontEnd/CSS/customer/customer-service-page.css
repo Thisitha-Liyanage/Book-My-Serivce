@@ -1,0 +1,185 @@
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #eef1f5;
+    overflow: hidden;
+    height: 110vh;
+}
+
+section {
+    margin-left: 16vw;
+    padding: 50px 40px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+
+section::-webkit-scrollbar {
+    width: 8px;
+}
+
+section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+section::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 10px;
+}
+
+section::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+/* ================= TITLE ================= */
+.page-title {
+    text-align: center;
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+    color: #0E0927;
+}
+
+/* ================= SEARCH ================= */
+.search-bar {
+    display: block;
+    margin: 0 auto 50px;
+    width: 52%;
+    max-width: 520px;
+    padding: 15px 22px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.search-bar:focus , .search-bar:hover {
+    border-color: #1B1464;
+    outline: none;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+}
+
+/* ================= GRID ================= */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 40px;
+    justify-items: center;
+    padding-bottom: 120px;
+}
+
+/* ================= CARD ================= */
+.service-card {
+    width: 290px;
+    height: 380px;
+    perspective: 1200px;
+    margin-bottom: 3vh;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.9s cubic-bezier(.4,.2,.2,1);
+}
+
+.service-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* FRONT & BACK */
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* ================= FRONT ================= */
+.card-front {
+    background: #ffffff;
+    padding: 28px;
+    text-align: center;
+}
+
+.card-front h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #0E0927;
+}
+
+/* category badge */
+.card-front h3::after {
+    content: "Service";
+    display: block;
+    font-size: 0.75rem;
+    margin: 8px auto 0;
+    width: fit-content;
+    padding: 4px 12px;
+    border-radius: 50px;
+    background: #eef1f5;
+    color: #1B1464;
+    font-weight: 600;
+}
+
+.card-front p {
+    margin: 10px 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.card-front .desc {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 14px;
+    line-height: 1.4;
+}
+
+.price {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #1B1464, #0E0927);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* ================= BACK ================= */
+.card-back {
+    background: linear-gradient(160deg, #0E0927, #1B1464);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+
+/* ================= BUTTON ================= */
+.book-btn {
+    padding: 15px 34px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.05rem;
+    cursor: pointer;
+    background: #ffffff;
+    color: #0E0927;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+    transform: scale(1.08);
+    background: #f4f4f4;
+}
+

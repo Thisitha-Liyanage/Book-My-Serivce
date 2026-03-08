@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden; 
+}
+
+/* Booking Section */
+#booking-section {
+    margin-left: 20vw;
+    padding: 40px;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+#booking-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+#booking-section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#booking-section::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 10px;
+}
+
+#booking-section::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 40px;
+    color: #0f172a;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+/* Booking List */
+.booking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Booking Card */
+.booking-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.booking-info h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.provider {
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+/* Right Side */
+.booking-actions {
+    text-align: right;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.status.confirmed {
+    background: #22c55e;
+    color: white;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+button {
+    border: none;
+    background: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button.call {
+    color: #2563eb;
+}
+
+button.cancel {
+    color: #ef4444;
+}
+
+/* New Booking Button */
+.new-booking {
+    display: block;
+    margin: 50px auto 0;
+    margin-bottom: 10vh;
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: #0f172a;
+    transition: all 0.5s ease-in-out ;
+}
+.new-booking:hover{
+    background: white;
+    border: 2px solid #0f172a;
+    color: #0f172a;
+}

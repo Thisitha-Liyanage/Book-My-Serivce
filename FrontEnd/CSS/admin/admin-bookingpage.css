@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f5f5f5;
+}
+section::-webkit-scrollbar {
+    width: 8px;
+}
+
+section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+section::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1e293b, #475569);
+    border-radius: 10px;
+}
+
+section::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #0f172a, #334155);
+}
+
+/* Main Content */
+.admin-content {
+    margin-left: 15vw;
+    padding: 5vh 3vw;
+}
+
+.admin-content h1 {
+    font-size: 2.2rem;
+    color: #0E0927;
+    margin-bottom: 3vh;
+}
+
+/* Controls */
+.table-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2vh;
+}
+
+.table-controls input,
+.table-controls select {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.table-controls input:focus,
+.table-controls select:focus {
+    border-color: #1B1464;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    overflow-x: auto;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: linear-gradient(180deg, #0E0927, #1B1464);
+    color: #fff;
+}
+
+thead th {
+    padding: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+tbody td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background: #f9f9f9;
+}
+
+/* Status */
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.pending {
+    background: #fde68a;
+    color: #92400e;
+}
+
+.accepted {
+    background: #bfdbfe;
+    color: #1e40af;
+}
+
+.completed {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.cancelled {
+    background: #fecaca;
+    color: #991b1b;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Book My Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png">
+    <link rel="stylesheet" href="/FrontEnd/CSS/admin/admin-home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<div id="sidebar"></div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main id="admin-home">
+    <h1>Admin Dashboard</h1>
+
+    <!-- Stats Cards -->
+    <section class="stats">
+        <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <h2>Customers</h2>
+            <p id="customer-count">0</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-user-cog"></i>
+            <h2>Providers</h2>
+            <p id="provider-count">0</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-toolbox"></i>
+            <h2>Services</h2>
+            <p id="service-count">0</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-calendar-check"></i>
+            <h2>Bookings</h2>
+            <p id="booking-count">0</p>
+        </div>
+    </section>
+
+    <!-- Recent Activity -->
+    <section class="recent">
+        <h3>Recent Bookings</h3>
+
+        <div class="booking-card">
+            <span>Electrician</span>
+            <span>Alex</span>
+            <span class="status completed">Completed</span>
+        </div>
+
+        <div class="booking-card">
+            <span>Plumber</span>
+            <span>John</span>
+            <span class="status pending">Pending</span>
+        </div>
+    </section>
+</main>
+<
+<script src="/FrontEnd/JS/admin-sidebar.js"></script>
+<script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+<script src="/FrontEnd/JS/admin/admin-homepage.js"></script>
+</body>
+</html>

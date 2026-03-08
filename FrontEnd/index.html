@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyService - Find & Book any service 🛠️</title>
+    <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png">
+    <link rel="stylesheet" href="/FrontEnd/CSS/index-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="container">
+        <div id="login">
+            <h1>Sign In</h1>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" class="input" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="input" placeholder="Enter your password">
+                </div>
+                
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+            <p id="forget-pass">
+                <a href="javascript:void(0)" onclick="openForgot()">Forgot Password?</a>
+            </p>
+        </div>
+
+        <div id="Sign-up">
+            <div class="signup-content">
+                <h1>Create Account</h1>
+
+                <form id="signup-form">
+                    <div class="signup-row">
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" id="ca-username" class="input" placeholder="Enter your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="ca-password" class="input" placeholder="Enter password">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="ca-confirmPass" class="input" placeholder="Re-enter password">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="ca-email" class="input" placeholder="Enter email">
+                    </div>
+
+                    <div class="signup-row">
+                        <div class="form-group">
+                            <label>Contact Number</label>
+                            <input type="text" id="ca-phone" class="input" placeholder="07XXXXXXXX">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Village</label>
+                            <input type="text" id="ca-village" class="input" placeholder="Enter village">
+                        </div>
+                    </div>
+
+                    <div class="signup-row">
+                        <div class="form-group">
+                            <label>Province</label>
+                            <input type="text" id="ca-province" class="input" placeholder="Enter province">
+                        </div>
+
+                        <div class="form-group">
+                            <label>District</label>
+                            <input type="text" id="ca-district" class="input" placeholder="Enter district">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Register As</label>
+                        <div class="role-select">
+                            <label class="role-option">
+                                <input type="radio" id="ca-role-customer" name="role" value="CUSTOMER" checked>
+                                <span>Customer</span>
+                            </label>
+
+                            <label class="role-option">
+                                <input type="radio" id="ca-role-provider" name="role" value="PROVIDER">
+                                <span>Service Provider</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    
+                    <button id="ca-button" type="submit" class="btn">Create Account</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div id="create-account">
+            <h1 id="ca-title">Welcome</h1>
+            <p id="ca-text">
+                Create your account to access our full range of services and book the right service with just a few clicks.
+            </p>
+            <button id="create-acc-btn" onclick="toggleCreate()">Create Account</button>
+        </div>
+
+        <!-- Forgot Password Popup -->
+        <div id="forgot-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeForgot()">x</span>
+
+                <h2>Forgot Password?</h2>
+                <p>Don't worry! Just type your email and we'll send you a link to reset your password.</p>
+
+                <input type="email" class="input" placeholder="Enter your email">
+
+                <button class="btn modal-btn">Send Reset Link</button>
+            </div>
+        </div>
+
+        <!-- error poop up  -->
+         <div id="error-popup"></div>
+    </section>
+    <script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+    <script src="/FrontEnd/JS/forgrt-password.js"></script>
+    <script src="/FrontEnd/JS/toggle-container.js"></script>   
+    <script src="/FrontEnd/JS/login.js"></script> 
+    <script src="/FrontEnd/JS/create-account.js"></script>
+</body>
+</html>

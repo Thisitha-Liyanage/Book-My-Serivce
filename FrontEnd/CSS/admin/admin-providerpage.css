@@ -1,0 +1,244 @@
+/* ===== Body & Fonts ===== */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f5f5f5;
+}
+section::-webkit-scrollbar {
+    width: 8px;
+}
+
+section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+section::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1e293b, #475569);
+    border-radius: 10px;
+}
+
+section::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #0f172a, #334155);
+}
+
+
+/* ===== Main Content ===== */
+.content {
+    margin-left: 15vw; /* keep sidebar spacing */
+    padding: 5vh 3vw;
+}
+
+.content h1 {
+    font-size: 2.2rem;
+    color: #0E0927;
+    margin-bottom: 3vh;
+}
+
+/* ===== Controls ===== */
+.table-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2vh;
+}
+
+.table-controls input,
+.table-controls select {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.table-controls input:focus,
+.table-controls select:focus {
+    border-color: #1B1464;
+}
+
+/* ===== Add Button ===== */
+.btn-add {
+    background: #1e3a8a;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+}
+
+.btn-add:hover {
+    background-color: #16296b;
+    transform: translateY(-1px);
+}
+
+/* ===== Table Wrapper - Booking Page Style ===== */
+.table-wrapper {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    overflow-x: auto;
+}
+
+/* ===== Table ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+}
+
+thead {
+    background: linear-gradient(180deg, #0E0927, #1B1464);
+    color: #fff;
+}
+
+thead th {
+    padding: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+tbody td {
+    padding: 14px;
+    font-size: 14px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+
+.status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-available {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-unavailable {
+    background: #fecaca;
+    color: #991b1b;
+}
+/* ===== Table Buttons ===== */
+table td button {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+pp
+table td button.btn-edit {
+    background-color: #2563eb;
+    color: #fff;
+    margin-right: 8px;
+}
+
+table td button.btn-edit:hover {
+    background-color: #1d4ed8;
+}
+
+table td button.btn-delete {
+    background-color: #dc2626;
+    color: #fff;
+}
+
+table td button.btn-delete:hover {
+    background-color: #b91c1c;
+}
+
+/* ===== Modal Common Styles ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-box input, .modal-box select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-save, .btn-update {
+    background-color: #16a34a;
+    color: #fff;
+}
+
+.btn-cancel {
+    background-color: #9ca3af;
+    color: #111;
+}
+
+
+/* ===== Modal Buttons (Improved) ===== */
+.modal-box .btn-save,
+.modal-box .btn-update,
+.modal-box .btn-cancel {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Save / Update button */
+.modal-box .btn-save,
+.modal-box .btn-update {
+    background: #1e3a8a; 
+    color: #fff;
+}
+
+.modal-box .btn-save:hover,
+.modal-box .btn-update:hover {
+    background: #16296b;
+    transform: translateY(-2px);
+}
+
+/* Cancel button */
+.modal-box .btn-cancel {
+    background: #f3f4f6; 
+    color: #0e0927;     
+    border: 1px solid #ccc;
+}
+
+.modal-box .btn-cancel:hover {
+    background: #e5e7eb;
+    transform: translateY(-2px);
+}

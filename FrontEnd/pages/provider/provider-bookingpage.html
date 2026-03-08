@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Provider | My Bookings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png">
+    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+    <link rel="stylesheet" href="/FrontEnd/CSS/prvider/provider-bookingpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div id="sidebar"></div>
+
+<main class="content">
+    <h1>My Bookings</h1>
+
+    <!-- Search -->
+    <div class="table-controls">
+        <input type="text" id="searchInput" placeholder="Search booking...">
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Customer ID</th>
+                <th>Service ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Total Amount (LKR)</th>
+            </tr>
+            </thead>
+
+            <tbody id="bookingTable">
+
+            <tr>
+                <td>BK-001</td>
+                <td>CUS-12</td>
+                <td>SER-01</td>
+                <td>2026-02-15</td>
+                <td>10:30 AM</td>
+                <td>2500</td>
+            </tr>
+
+            <tr>
+                <td>BK-002</td>
+                <td>CUS-08</td>
+                <td>SER-02</td>
+                <td>2026-02-16</td>
+                <td>02:00 PM</td>
+                <td>1800</td>
+            </tr>
+
+            <tr>
+                <td>BK-003</td>
+                <td>CUS-05</td>
+                <td>SER-01</td>
+                <td>2026-02-17</td>
+                <td>09:00 AM</td>
+                <td>3200</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script src="/FrontEnd/JS/provider-sidebar.js"></script>
+</body>
+</html>

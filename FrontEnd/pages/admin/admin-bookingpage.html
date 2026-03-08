@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Bookings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="/FrontEnd/Assest/logo.png">
+    <link rel="stylesheet" href="/FrontEnd/CSS/admin/admin-bookingpage.css">
+    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div id="sidebar"></div>
+
+<!-- Main Content -->
+<main class="admin-content">
+    <h1>Bookings</h1>
+
+    <!-- Controls -->
+    <div class="table-controls">
+        <input type="text" id="searchInput" placeholder="Search booking...">
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Service ID</th>
+                    <th>Customer ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="bookingTable">
+                <tr>
+                    <td>1</td>
+                    <td>S-102</td>
+                    <td>C-301</td>
+                    <td>2026-02-01</td>
+                    <td>10:30 AM</td>
+                    <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>S-220</td>
+                    <td>C-112</td>
+                    <td>2026-02-01</td>
+                    <td>02:00 PM</td>
+                    <td><span class="status completed">Completed</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script src="/FrontEnd/JS/admin-sidebar.js"></script>
+</body>
+</html>

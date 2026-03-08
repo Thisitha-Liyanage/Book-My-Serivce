@@ -1,0 +1,71 @@
+<div class="sidebar">
+    <div class="sidebar-user">
+        <div class="user-icon">
+            <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <span class="user-name">Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a href="/FrontEnd/pages/admin/admin-homepage.html" class="nav-item">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="/FrontEnd/pages/admin/admin-customerpage.html" class="nav-item">
+            <i class="fa-solid fa-users"></i>
+            <span>Customers</span>
+        </a>
+
+        <a href="/FrontEnd/pages/admin/admin-providerpage.html" class="nav-item">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>Providers</span>
+        </a>
+
+        <a href="/FrontEnd/pages/admin/admin-servicepage.html" class="nav-item">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Services</span>
+        </a>
+
+        <a href="/FrontEnd/pages/admin/admin-bookingpage.html" class="nav-item">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Bookings</span>
+        </a>
+
+        <a href="#" class="nav-item">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>My Profile</span>
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <a href="#" class="logout" id="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Log Out</span>
+        </a>
+    </div>
+
+    <!-- Script to dynamically set username -->
+    <script>
+        (function() {
+            let userString = sessionStorage.getItem("user");
+            if (!userString) return;
+
+            let user = JSON.parse(userString);
+
+            let nameElement = document.querySelector(".user-name");
+            if (nameElement) {
+                nameElement.innerText = user.username; 
+            }
+
+            let logoutBtn = document.getElementById("logout-btn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    sessionStorage.clear();
+                    window.location.href = "/FrontEnd/index.html";
+                });
+            }
+        })();
+    </script>
+</div>

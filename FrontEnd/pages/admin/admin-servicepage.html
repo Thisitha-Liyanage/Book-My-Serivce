@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/FrontEnd/CSS/admin/admin-servicepage.css">
+    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div id="sidebar"></div>
+
+    <main class="content">
+        <h1>Services</h1>
+
+        <div class="table-controls">
+            <input type="text" id="searchInput" placeholder="Search service...">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Service Name</th>
+                        <th>Category</th>
+                        <th>Provider ID</th>
+                        <th>Price (LKR)</th>
+                        <th>Description</th>
+                        <th>District</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="serviceTable">
+                    <tr>
+                        <td>1</td>
+                        <td>Electrician</td>
+                        <td>CAT-01</td>
+                        <td>PRO-12</td>
+                        <td>2500</td>
+                        <td>House wiring & repairs</td>
+                        <td>Colombo</td>
+                        <td><span class="status status-available">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Plumber</td>
+                        <td>CAT-02</td>
+                        <td>PRO-08</td>
+                        <td>1800</td>
+                        <td>Leak fixing & pipe fitting</td>
+                        <td>Galle</td>
+                        <td><span class="status status-unavailable">Inactive</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="/FrontEnd/JS/admin-sidebar.js"></script>
+</body>
+</html>
