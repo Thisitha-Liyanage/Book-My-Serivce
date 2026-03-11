@@ -9,16 +9,15 @@ import lk.ijse.aad.backend.Exception.Custom.RoleNotFoundException;
 import lk.ijse.aad.backend.Repo.UserRepo;
 import lk.ijse.aad.backend.Service.UserService;
 import lk.ijse.aad.backend.Util.JwtUtil;
-import org.apache.coyote.BadRequestException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.ott.InvalidOneTimeTokenException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -79,4 +78,24 @@ public class UserServiceImpl implements UserService {
         return count;
     }
 
+    @Override
+    public List<UserDto> findAllUsersbyRole(Role role) {
+        List<User> userList = userRepo.findAllByRole(role);
+
+        return userList.stream()
+                .map(user -> modelMapper.map(user, UserDto.class))
+                .toList();
+    }
+
+    @Override
+    public void deleteUserByEmail(String email) {
+
+        Optional<User> userOpt = userRepo.findByEmail(email);
+
+        if(userOpt.isPresent()){
+            userRepo.delete(userOpt.get());
+        } else {
+            throw new UsernameNotFoundException("Email not found: " + email);
+        }
+    }
 }

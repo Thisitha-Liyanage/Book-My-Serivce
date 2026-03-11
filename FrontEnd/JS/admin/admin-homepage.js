@@ -55,7 +55,7 @@ $(document).ready(function () {
 
     // Get Customer Count
     $.ajax({
-        url: "http://localhost:8080/api/v1/admin/getAllCustomers",
+        url: "http://localhost:8080/api/v1/admin/getCustomerCount",
         method: "GET",
         headers: headers,
         success: function(response) {
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
     // Get Provider Count
     $.ajax({
-        url: "http://localhost:8080/api/v1/admin/getAllProviders",
+        url: "http://localhost:8080/api/v1/admin/getProviderCount",
         method: "GET",
         headers: headers,
         success: function(response) {
