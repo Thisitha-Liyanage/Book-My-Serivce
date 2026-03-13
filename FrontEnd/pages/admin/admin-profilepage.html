@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/FrontEnd/CSS/admin/admin-profielpage.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+<link rel="icon" href="/FrontEnd/Assest/logo.png">
+</head>
+<body>
+
+    
+    <div id="sidebar"></div>
+
+<div class="profile-container">
+    <div class="profile-card">
+
+        <div class="profile-header">
+            <i class="fa fa-user-shield profile-icon"></i>
+            <h2>Admin Profile</h2>
+        </div>
+
+        <div class="profile-details">
+
+            <div class="profile-row">
+                <label>Name</label>
+                <span id="adminName">-</span>
+            </div>
+
+            <div class="profile-row">
+                <label>Email</label>
+                <span id="adminEmail">-</span>
+            </div>
+
+            <div class="profile-row">
+                <label>Phone</label>
+                <span id="adminPhone">-</span>
+            </div>
+
+            <div class="profile-row">
+                <label>Province</label>
+                <span id="adminProvince">-</span>
+            </div>
+
+            <div class="profile-row">
+                <label>City</label>
+                <span id="adminCity">-</span>
+            </div>
+
+            <div class="profile-row">
+                <label>Village</label>
+                <span id="adminVillage">-</span>
+            </div>
+
+            <div class="profile-row">
+                <label>Role</label>
+                <span id="adminRole" class="role-badge">ADMIN</span>
+            </div>
+
+        </div>
+
+        <div class="profile-actions">
+            <button class="edit-btn">
+                <i class="fa fa-edit"></i> Edit Profile
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+<script src="/FrontEnd/JS/admin-sidebar.js"></script>
+<script src="/FrontEnd/JS/admin/admin-profilepage.js"></script>
+</body>
+</html>

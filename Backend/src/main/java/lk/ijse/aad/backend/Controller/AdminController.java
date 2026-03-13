@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 @RestController
 @CrossOrigin
@@ -44,6 +48,9 @@ public class AdminController {
         );
     }
 
+
+    /// //////////////////////////// admin customer /////////////////////////////////////
+
     @GetMapping("getAllCustomers")
     public ResponseEntity<APIResponse> getAllCustomers(Authentication authentication) {
         String email = authentication.getName();
@@ -76,5 +83,37 @@ public class AdminController {
 
         UserDto userDto = userService.findUserByEmail(email);
         return ResponseEntity.ok(new APIResponse(200 ,"customer Found", userDto));
+    }
+
+    /// ////////////////////////////// admin provider ////////////////////////////////////////
+    @GetMapping("getAllProviders")
+    public ResponseEntity<APIResponse> getAllProviders(Authentication authentication) {
+        String email = authentication.getName();
+        userService.findUserByEmail(email);
+        return ResponseEntity.ok(new APIResponse(200 , "admin found" ,
+                userService.findAllUsersbyRole(Role.PROVIDER)));
+    }
+
+    @DeleteMapping("/deleteProvider/{email}")
+    public ResponseEntity<APIResponse> deleteProvider(
+            @PathVariable String email
+            ,Authentication authentication
+    ){
+        String adminEmail = authentication.getName();
+        userService.findUserByEmail(adminEmail);
+        userService.deleteUserByEmail(email);
+        return ResponseEntity.ok(
+                new APIResponse(200 , "admin Found", "Provider Deleted")
+        );
+    }
+
+    @GetMapping("/getProviderByEmail/{email}")
+    public ResponseEntity<APIResponse> getProviderByEmail(
+            @PathVariable String email
+            ,Authentication authentication
+    ){
+        userService.findUserByEmail(authentication.getName());
+        UserDto userDto = userService.findUserByEmail(email);
+        return ResponseEntity.ok(new APIResponse(200 ,"admin found", userDto));
     }
 }

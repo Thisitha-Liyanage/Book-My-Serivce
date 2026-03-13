@@ -21,6 +21,7 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -98,4 +99,6 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException("Email not found: " + email);
         }
     }
+
 }
+

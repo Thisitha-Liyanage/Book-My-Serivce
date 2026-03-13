@@ -235,3 +235,21 @@ tbody td {
     margin: 8px 0;
     font-size: 16px;
 }
+
+#error-popup{
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffdddd;
+    border: 1px solid #ff5c5c;
+    color: #a70000;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-family: Arial, sans-serif;
+    display: none;
+    z-index: 9999;
+    max-width: 400px;
+    white-space: pre-line;
+}

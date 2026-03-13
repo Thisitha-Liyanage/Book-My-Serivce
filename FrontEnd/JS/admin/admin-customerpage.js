@@ -128,9 +128,9 @@ function showCustomerPopup(customer){
         <p><strong>Province:</strong> ${customer.province || ""}</p>
         <p><strong>District:</strong> ${customer.city || ""}</p>
         <p><strong>Village:</strong> ${customer.village || ""}</p>
-        <button id="deleteFromModal" style="margin-top:10px;background:red;color:white;padding:8px 12px;border:none;border-radius:5px;cursor:pointer;">
-            Delete Customer
-        </button>
+        <button class="delete-btn modal-delete">
+                            <i class="fa fa-trash"></i> Delete Customer
+                        </button>
     `;
     $("#customerDetails").html(detailsHtml);
     $("#customerModal").fadeIn();

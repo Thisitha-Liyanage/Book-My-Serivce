@@ -32,14 +32,14 @@
             <span>Bookings</span>
         </a>
 
-        <a href="#" class="nav-item">
+        <a href="/FrontEnd/pages/admin/admin-profilepage.html" class="nav-item">
             <i class="fa-solid fa-user-shield"></i>
             <span>My Profile</span>
         </a>
     </nav>
 
     <div class="sidebar-footer">
-        <a href="#" class="logout" id="logout-btn">
+        <a class="logout" id="logout-btn">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span>Log Out</span>
         </a>
@@ -63,7 +63,7 @@
                 logoutBtn.addEventListener("click", function(e) {
                     e.preventDefault();
                     sessionStorage.clear();
-                    window.location.href = "/FrontEnd/index.html";
+                    window.location.href = "/index.html";
                 });
             }
         })();
