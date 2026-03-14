@@ -39,7 +39,7 @@
     </nav>
 
     <div class="sidebar-footer">
-        <a class="logout" id="logout-btn">
+        <a href="/FrontEnd/index.html" class="logout" id="logout-btn">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span>Log Out</span>
         </a>
@@ -56,15 +56,6 @@
             let nameElement = document.querySelector(".user-name");
             if (nameElement) {
                 nameElement.innerText = user.username; 
-            }
-
-            let logoutBtn = document.getElementById("logout-btn");
-            if (logoutBtn) {
-                logoutBtn.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    sessionStorage.clear();
-                    window.location.href = "/index.html";
-                });
             }
         })();
     </script>

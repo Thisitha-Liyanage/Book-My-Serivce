@@ -96,3 +96,96 @@ tbody td {
     background: #fecaca;
     color: #991b1b;
 }
+
+.delete-btn{
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.delete-btn i{
+    margin-right: 4px;
+}
+
+.delete-btn:hover{
+    background-color: #c0392b;
+}
+
+.delete-btn:active{
+    transform: scale(0.95);
+}
+
+/* MODAL BACKGROUND */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(3px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MODAL BOX */
+.modal-content {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+
+    width: 420px;
+    max-width: 90%;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+    position: relative;
+
+    animation: modalFade 0.3s ease;
+}
+
+/* TITLE */
+.modal-content h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #333;
+}
+
+/* DETAILS TEXT */
+#providerDetails p {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #444;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes modalFade {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

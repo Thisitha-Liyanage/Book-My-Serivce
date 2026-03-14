@@ -88,6 +88,23 @@ $(document).ready(function () {
         }
     });
 
+    // Get Services Count
+    $.ajax({
+        url: "http://localhost:8080/api/v1/admin/getServicesCount",
+        method: "GET",
+        headers: headers,
+        success: function(response) {
+            console.log("Services Count:", response);
+
+            if (response && response.data !== undefined) {
+                $("#service-count").text(response.data);
+            }
+        },
+        error: function(xhr) {
+            console.error("Services count error:", xhr.responseText);
+        }
+    });
+
 });
 
 

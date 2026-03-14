@@ -44,15 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.warn("No user found in localStorage");
             }
 
-            // Logout button
-            const logoutBtn = sidebarContainer.querySelector("#logout-btn");
-            if (logoutBtn) {
-                logoutBtn.addEventListener("click", e => {
-                    e.preventDefault();
-                    localStorage.clear();
-                    window.location.href = "../index.html";
-                });
-            }
         })
         .catch(err => console.error("Admin sidebar load failed", err));
 });

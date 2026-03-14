@@ -2,8 +2,10 @@ package lk.ijse.aad.backend.Controller;
 
 import lk.ijse.aad.backend.Dto.UserDto;
 import lk.ijse.aad.backend.Entity.Role;
+import lk.ijse.aad.backend.Service.ServicesService;
 import lk.ijse.aad.backend.Service.UserService;
 import lk.ijse.aad.backend.Util.APIResponse;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -20,6 +22,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ServicesService servicesService;
 
     @GetMapping("/foundAdmin")
     public ResponseEntity<APIResponse> foundAdmin(Authentication authentication) {
@@ -46,6 +51,14 @@ public class AdminController {
         return ResponseEntity.ok(
                 new APIResponse(200 ,"Admin Found", userService.countByRole("PROVIDER"))
         );
+    }
+
+    @GetMapping("getServicesCount")
+    public ResponseEntity<APIResponse> getAllServicesCount(Authentication authentication) {
+        String email = authentication.getName();
+        userService.findUserByEmail(email);
+        return ResponseEntity.ok(new APIResponse(200 ,"Admin Found",servicesService.
+                conuntAllServices()));
     }
 
 
@@ -116,4 +129,35 @@ public class AdminController {
         UserDto userDto = userService.findUserByEmail(email);
         return ResponseEntity.ok(new APIResponse(200 ,"admin found", userDto));
     }
+
+
+    /// /////////////////////// admin service ///////////////////////////////////
+    @GetMapping("getAllServices")
+    public ResponseEntity<APIResponse> getAllServices(Authentication authentication) {
+        String email = authentication.getName();
+        userService.findUserByEmail(email);
+        return ResponseEntity.ok(new APIResponse(200 , "admin found"
+                , servicesService.getAllServices()));
+    }
+
+    @GetMapping("getServiceByID/{id}")
+    public ResponseEntity<APIResponse> getServiceByID(
+            @PathVariable int id,
+            Authentication authentication) {
+        String adminEmail = authentication.getName();
+        userService.findUserByEmail(adminEmail);
+        return ResponseEntity.ok(new APIResponse(200 , "service found" , servicesService.getServiceByID(id)));
+    }
+
+    @DeleteMapping("deleteService/{id}")
+    public ResponseEntity<APIResponse> deleteService(
+            @PathVariable int id,
+            Authentication authentication
+    ) {
+        String adminEmail = authentication.getName();
+        userService.findUserByEmail(adminEmail);
+        servicesService.deleteServiceByID(id);
+        return ResponseEntity.ok(new APIResponse(200, "Success", "Service Deleted"));
+    }
+
 }
