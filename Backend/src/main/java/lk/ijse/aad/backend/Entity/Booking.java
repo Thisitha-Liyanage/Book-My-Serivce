@@ -7,37 +7,37 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Services {
+@Getter
+@Setter
+public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
+    private LocalDate bookingDate;
+
+    @Column(nullable = false)
+    private LocalTime bookingTime;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Category category;
+    private Status status;
 
-    @Column(nullable = false)
-    private String title;
-
-    @Column(nullable = false)
-    private String description;
-
-    @Column(nullable = false)
-    private double price;
-
-    @Enumerated(EnumType.STRING)
-    private Availability availability;
-
+    // MANY bookings belong to ONE user
     @ManyToOne
-    @JoinColumn(name = "provider_id", nullable = false)
-    private User provider;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Booking> bookings;
+    // MANY bookings belong to ONE service
+    @ManyToOne
+    @JoinColumn(name = "service_id", nullable = false)
+    private Services service;
+
 }

@@ -2,6 +2,8 @@ package lk.ijse.aad.backend.Controller;
 
 import lk.ijse.aad.backend.Dto.UserDto;
 import lk.ijse.aad.backend.Entity.Role;
+import lk.ijse.aad.backend.Entity.Status;
+import lk.ijse.aad.backend.Service.BookingService;
 import lk.ijse.aad.backend.Service.ServicesService;
 import lk.ijse.aad.backend.Service.UserService;
 import lk.ijse.aad.backend.Util.APIResponse;
@@ -14,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -25,6 +29,9 @@ public class AdminController {
 
     @Autowired
     private ServicesService servicesService;
+
+    @Autowired
+    private BookingService bookingService;
 
     @GetMapping("/foundAdmin")
     public ResponseEntity<APIResponse> foundAdmin(Authentication authentication) {
@@ -59,6 +66,35 @@ public class AdminController {
         userService.findUserByEmail(email);
         return ResponseEntity.ok(new APIResponse(200 ,"Admin Found",servicesService.
                 conuntAllServices()));
+    }
+
+    @GetMapping("getBookingCount")
+    public ResponseEntity<APIResponse> getAllBookingCount(Authentication authentication) {
+        String email = authentication.getName();
+        userService.findUserByEmail(email);
+        return ResponseEntity.ok(new APIResponse(200 , "Admin found" , bookingService.conuntAllServices()
+                ));
+    }
+
+
+    /// //////////////////////// booking status overview ///////////////////////////////
+    @GetMapping("/getBookingStatusOverview")
+    public ResponseEntity<APIResponse> getBookingStatusOverview(Authentication authentication) {
+        userService.findUserByEmail(authentication.getName());
+        int pending = bookingService.countByStatus(Status.PENDING);
+        int accepted = bookingService.countByStatus(Status.ACCEPTED);
+        int completed = bookingService.countByStatus(Status.COMPLETED);
+        int cancelled = bookingService.countByStatus(Status.REJECTED);
+
+        Map<String, Integer> statusCounts = new HashMap<>();
+        statusCounts.put("pending", pending);
+        statusCounts.put("accepted", accepted);
+        statusCounts.put("completed", completed);
+        statusCounts.put("cancelled", cancelled);
+
+        return ResponseEntity.ok(
+                new APIResponse(200, "Booking status overview fetched successfully", statusCounts)
+        );
     }
 
 
@@ -158,6 +194,25 @@ public class AdminController {
         userService.findUserByEmail(adminEmail);
         servicesService.deleteServiceByID(id);
         return ResponseEntity.ok(new APIResponse(200, "Success", "Service Deleted"));
+    }
+
+    /// ///////////////////////// admin booking ////////////////////////////////////
+    @GetMapping("getAllBookings")
+    public ResponseEntity<APIResponse> getAllBookings(Authentication authentication) {
+        String email = authentication.getName();
+        userService.findUserByEmail(email);
+        return ResponseEntity.ok(new APIResponse(200 , "admin found" ,
+                bookingService.getAllBookings()));
+    }
+
+    @GetMapping("findBooking/{id}")
+    public ResponseEntity<APIResponse> findBooking(
+            Authentication authentication,
+            @PathVariable int id) {
+        String adminEmail = authentication.getName();
+        userService.findUserByEmail(adminEmail);
+        return ResponseEntity.ok(new APIResponse(200 , "Booking found" ,
+                bookingService.getBookingById(id)));
     }
 
 }

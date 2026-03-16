@@ -3,6 +3,7 @@ package lk.ijse.aad.backend.Exception;
 import io.jsonwebtoken.ExpiredJwtException;
 import jdk.jshell.spi.ExecutionControl;
 import lk.ijse.aad.backend.Dto.AuthResponseDto;
+import lk.ijse.aad.backend.Exception.Custom.BookingNotFoundException;
 import lk.ijse.aad.backend.Exception.Custom.ServiceNotFoundEception;
 import lk.ijse.aad.backend.Util.APIResponse;
 import org.springframework.http.HttpStatus;
@@ -94,6 +95,15 @@ public class GlobalExceptionHandler {
         return new APIResponse(404 ,
                 "Service not found" ,
                 "Service Not found");
+    }
+
+
+    @ExceptionHandler(BookingNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public APIResponse handleBookingFoundException(BookingNotFoundException e){
+        return new APIResponse(404 ,
+                "Booking not found" ,
+                "Booking Not found");
     }
 }
 

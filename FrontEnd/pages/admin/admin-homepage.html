@@ -44,23 +44,36 @@
             <p id="booking-count">0</p>
         </div>
     </section>
+    
+    <div class="booking-status-overview">
+    <h2>Booking Status Overview</h2>
 
-    <!-- Recent Activity -->
-    <section class="recent">
-        <h3>Recent Bookings</h3>
-
-        <div class="booking-card">
-            <span>Electrician</span>
-            <span>Alex</span>
-            <span class="status completed">Completed</span>
+    <div class="status-cards">
+        <div class="status-card pending">
+            <i class="fa-solid fa-clock"></i>
+            <h3>Pending</h3>
+            <p id="pending-count">0</p>
         </div>
 
-        <div class="booking-card">
-            <span>Plumber</span>
-            <span>John</span>
-            <span class="status pending">Pending</span>
+        <div class="status-card confirmed">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>Confirmed</h3>
+            <p id="confirmed-count">0</p>
         </div>
-    </section>
+
+        <div class="status-card completed">
+            <i class="fa-solid fa-check-double"></i>
+            <h3>Completed</h3>
+            <p id="completed-count">0</p>
+        </div>
+
+        <div class="status-card cancelled">
+            <i class="fa-solid fa-ban"></i>
+            <h3>Cancelled</h3>
+            <p id="cancelled-count">0</p>
+        </div>
+    </div>
+</div>
 </main>
 <
 <script src="/FrontEnd/JS/admin-sidebar.js"></script>
