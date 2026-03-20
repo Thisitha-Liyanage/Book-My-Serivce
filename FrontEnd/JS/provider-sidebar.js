@@ -1,6 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
     const sidebarContainer = document.getElementById("sidebar");
 
+    const userString = localStorage.getItem("user");
+    let user = null;
+    console.log(userString);
+
+    if (userString) {
+        try {
+            user = JSON.parse(userString);
+        } catch (err) {
+            console.error("Failed to parse user from localStorage", err);
+        }
+    }
+
     if (!sidebarContainer) {
         console.error("Sidebar container not found!");
         return;
@@ -26,6 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     link.classList.add("active");
                 });
             });
+
+            // ✅ Add timeout here
+            setTimeout(() => {
+                if (user && user.name) {
+                    const nameElement = document.querySelector("#username");
+                    if (nameElement) {
+                        nameElement.innerText = user.name;
+                    }
+                } else {
+                    console.warn("No user found in localStorage");
+                }
+            }, 100); // 100ms delay
         })
         .catch(err => console.error("Admin sidebar load failed", err));
 });

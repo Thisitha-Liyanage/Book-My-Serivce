@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.profile-container {
+    width: 420px;
+    margin-left: 15vw;
+}
+
+.profile-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+}
+
+.profile-image-container img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #3498db;
+}
+
+.change-photo-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: #3498db;
+    color: white;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.change-photo-btn:hover {
+    background: #2980b9;
+}
+
+.profile-icon {
+    font-size: 50px;
+    color: #2ecc71;
+}
+
+.profile-header h2 {
+    margin-top: 10px;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-row label {
+    font-weight: bold;
+    color: #555;
+}
+
+.profile-row span {
+    color: #333;
+}
+
+.role-badge {
+    background: #2ecc71;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.profile-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.edit-btn {
+    background: #2ecc71;
+    border: none;
+    padding: 10px 18px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background: #27ae60;
+}
