@@ -1,5 +1,6 @@
 package lk.ijse.aad.backend.Service.Impl;
 
+import jakarta.transaction.Transactional;
 import lk.ijse.aad.backend.Dto.BookingResponseDto;
 import lk.ijse.aad.backend.Entity.Booking;
 import lk.ijse.aad.backend.Entity.Status;
@@ -46,5 +47,24 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public int countByStatus(Status status) {
         return bookingRepo.countByStatus(status);
+    }
+
+    @Override
+    public List<BookingResponseDto> getAllBookingsByProvider(int providerId) {
+
+        List<Booking> bookings = bookingRepo.findByServiceProviderId(providerId);
+
+        return bookings.stream()
+                .map(booking -> modelMapper.map(booking, BookingResponseDto.class))
+                .toList();
+    }
+
+    @Override
+    @Transactional
+    public void updateStatus(int bookingId , Status status) {
+        int updatedRaws = bookingRepo.updateBookingStatus(bookingId , status);
+        if (updatedRaws <= 0) {
+            throw new BookingNotFoundException("Booking not found");
+        }
     }
 }

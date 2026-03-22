@@ -11,4 +11,6 @@ public interface BookingService {
     List<BookingResponseDto> getAllBookings();
     BookingResponseDto getBookingById(int bookingId);
     int countByStatus(Status status);
+    List<BookingResponseDto> getAllBookingsByProvider(int providerId);
+    void updateStatus(int bookingId , Status status);
 }

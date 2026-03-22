@@ -66,3 +66,154 @@ tbody td {
     font-size: 14px;
     width: 250px;
 }
+
+/* Status section styling */
+.status-section {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-section label {
+    font-weight: bold;
+}
+
+.status-section select {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.status-section button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #355872; /* Dark blue */
+    color: #fff;
+}
+
+.status-section button:hover {
+    background-color: #7aaace; /* Light hover */
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    /* center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* hidden state */
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s ease;
+}
+
+/* SHOW */
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    width: 400px;
+    max-width: 90%;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+
+    transform: translateY(-20px);
+    transition: 0.3s ease;
+}
+
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+/* Slide-down animation for modal */
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===== Close Button ===== */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #7aaace;
+}
+
+/* ===== Modal Heading ===== */
+.modal-content h2 {
+    margin-top: 0;
+    color: #0E0927;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+/* ===== Booking Details Styling ===== */
+#bookingDetails p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+#bookingDetails p strong {
+    color: #0E0927;
+}
+
+/* ===== Optional: Add Status Dropdown and Button ===== */
+.status-section {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-section label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.status-section select {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.status-section button {
+    padding: 5px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #355872;
+    color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+.status-section button:hover {
+    background-color: #7aaace;
+}
+

@@ -2,6 +2,7 @@ package lk.ijse.aad.backend.Service.Impl;
 
 import lk.ijse.aad.backend.Dto.AuthResponseDto;
 import lk.ijse.aad.backend.Dto.LoginDto;
+import lk.ijse.aad.backend.Dto.ProviderResponseDto;
 import lk.ijse.aad.backend.Dto.UserDto;
 import lk.ijse.aad.backend.Entity.Role;
 import lk.ijse.aad.backend.Entity.User;
@@ -70,6 +71,7 @@ public class UserServiceImpl implements UserService {
         return modelMapper.map(user, UserDto.class);
     }
 
+
     @Override
     public long countByRole(String role) {
         long count = userRepo.countByRole(Role.valueOf(role));
@@ -98,6 +100,16 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new UsernameNotFoundException("Email not found: " + email);
         }
+    }
+
+    @Override
+    public ProviderResponseDto findProviderByEmail(String email) {
+        User user = userRepo.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Email not found"));
+        if (user == null) {
+            throw new UsernameNotFoundException("Email not found");
+        }
+        return modelMapper.map(user, ProviderResponseDto.class);
     }
 
 }

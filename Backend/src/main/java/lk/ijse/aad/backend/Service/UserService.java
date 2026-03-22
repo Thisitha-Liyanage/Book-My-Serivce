@@ -2,6 +2,7 @@ package lk.ijse.aad.backend.Service;
 
 import lk.ijse.aad.backend.Dto.AuthResponseDto;
 import lk.ijse.aad.backend.Dto.LoginDto;
+import lk.ijse.aad.backend.Dto.ProviderResponseDto;
 import lk.ijse.aad.backend.Dto.UserDto;
 import lk.ijse.aad.backend.Entity.Role;
 import lk.ijse.aad.backend.Entity.User;
@@ -15,4 +16,5 @@ public interface UserService {
     long countByRole(String role);
     List<UserDto> findAllUsersbyRole(Role role);
     void deleteUserByEmail(String email);
+    ProviderResponseDto findProviderByEmail(String email);
 }
