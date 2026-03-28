@@ -1,5 +1,6 @@
 package lk.ijse.aad.backend.Dto;
 
+import lk.ijse.aad.backend.Entity.Availability;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,6 @@ public class ServiceResponseDto {
     private String title;
     private String description;
     private double price;
+    private String availability;
     private int userId;
 }

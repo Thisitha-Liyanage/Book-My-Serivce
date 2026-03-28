@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lk.ijse.aad.backend.Entity.Availability;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,5 +34,9 @@ public class ServiceDto {
 
     @NotNull(message = "User ID is required")
     @Min(value = 1, message = "User ID must be a positive integer")
-    private Integer userId;
+    private int providerId;
+
+    @NotBlank(message = "availability is required")
+    @Size(max = 50, message = "availability must be at most 10 characters")
+    private String availability;
 }

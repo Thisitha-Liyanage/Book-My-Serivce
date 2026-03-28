@@ -1,153 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Provider | My Services</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png">
-    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
-    <link rel="stylesheet" href="/FrontEnd/CSS/prvider/provider-servicepage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>Provider | My Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png" />
+  <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css" />
+  <link rel="stylesheet" href="/FrontEnd/CSS/prvider/provider-servicepage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
+
 <body>
+  <div id="sidebar"></div>
 
-<div id="sidebar"></div>
-
-<main class="content">
+  <main class="content">
     <h1>My Services</h1>
 
     <!-- Top Controls -->
     <div class="table-controls">
-        <input type="text" id="searchInput" placeholder="Search service...">
+      <input type="text" id="searchInput" placeholder="Search service..." />
 
-        <button class="btn add-btn" onclick="openAddModal()">
-            <i class="fas fa-plus"></i> Add Service
-        </button>
-
+      <button class="btn add-btn" onclick="openAddModal()">
+        <i class="fas fa-plus"></i> Add Service
+      </button>
     </div>
 
     <div class="table-wrapper">
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Service Name</th>
-                <th>Category</th>
-                <th>Price (LKR)</th>
-                <th>Description</th>
-                <th>District</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Service Name</th>
+            <th>Category</th>
+            <th>Price (LKR)</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-            <tbody id="serviceTable">
-
-            <tr>
-                <td>1</td>
-                <td>Electrician</td>
-                <td>CAT-01</td>
-                <td>2500</td>
-                <td>House wiring & repairs</td>
-                <td>Colombo</td>
-                <td><span class="status status-available">Active</span></td>
-                <td class="action-buttons">
-                    <button class="btn edit-btn" onclick="openUpdateModal(this)">
-                        <i class="fas fa-edit"></i>
-                    </button>
-
-                    <button class="btn delete-btn">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>2</td>
-                <td>Plumber</td>
-                <td>CAT-02</td>
-                <td>1800</td>
-                <td>Leak fixing & pipe fitting</td>
-                <td>Galle</td>
-                <td><span class="status status-unavailable">Inactive</span></td>
-                <td class="action-buttons">
-                    <button class="btn edit-btn">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="btn delete-btn">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-
-            </tbody>
-        </table>
+        <tbody id="serviceTable"></tbody>
+      </table>
     </div>
-</main>
+  </main>
 
-<!-- Update Service Modal -->
-<div id="updateModal" class="modal">
+  <!-- Update Service Modal -->
+  <div id="updateModal" class="modal">
     <div class="modal-content">
-        <h3>Update Service</h3>
+      <h3>Update Service</h3>
 
-        <input type="text" id="updateId" placeholder="Service ID" disabled>
-        <input type="text" id="updateName" placeholder="Service Name">
-        <input type="text" id="updateCategory" placeholder="Category">
-        <input type="number" id="updatePrice" placeholder="Price">
-        <input type="text" id="updateDescription" placeholder="Description">
-        <input type="text" id="updateDistrict" placeholder="District">
+      <input type="text" id="updateId" placeholder="Service ID" disabled />
+      <input type="text" id="updateName" placeholder="Service Name" />
+      <select id="updateCategory">
+        <!-- Options will be dynamically added -->
+      </select>
+      <input type="number" id="updatePrice" placeholder="Price" />
+      <input type="text" id="updateDescription" placeholder="Description" />
 
-        <select id="updateStatus">
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select>
+      <select id="updateStatus">
+        <option value="AVAILABLE">Active</option>
+        <option value="UNAVAILABLE">Inactive</option>
+      </select>
 
-        <div class="modal-buttons">
-            <button class="save-btn" onclick="confirmSave()">Save</button>
-            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
-        </div>
-
+      <div class="modal-buttons">
+        <button class="save-btn" onclick="confirmSave()">Save</button>
+        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- Confirmation Modal -->
-<div id="confirmModal" class="modal">
+  <!-- Confirmation Modal -->
+  <div id="confirmModal" class="modal">
     <div class="modal-content">
-        <h3 id="confirmTitle">Confirm Action</h3>
-        <p id="confirmMessage">Are you sure?</p>
+      <h3 id="confirmTitle">Confirm Action</h3>
+      <p id="confirmMessage">Are you sure?</p>
 
-        <div class="modal-buttons">
-            <button class="save-btn" id="confirmYes">Yes</button>
-            <button class="cancel-btn" onclick="closeConfirmModal()">Cancel</button>
-        </div>
+      <div class="modal-buttons">
+        <button class="save-btn" id="confirmYes">Yes</button>
+        <button class="cancel-btn" onclick="closeConfirmModal()">
+          Cancel
+        </button>
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- Add Service Modal -->
-<div id="addModal" class="modal">
+  <!-- Add Service Modal -->
+  <div id="addModal" class="modal">
     <div class="modal-content">
-        <h3>Add New Service</h3>
+      <h3>Add New Service</h3>
 
-        <input type="text" id="addName" placeholder="Service Name">
-        <input type="text" id="addCategory" placeholder="Category">
-        <input type="number" id="addPrice" placeholder="Price">
-        <input type="text" id="addDescription" placeholder="Description">
-        <input type="text" id="addDistrict" placeholder="District">
+      <input type="text" id="addName" placeholder="Service Name" />
+      <select id="addCategory">
+        <!-- Options will be dynamically added -->
+      </select>
+      <input type="number" id="addPrice" placeholder="Price" />
+      <input type="text" id="addDescription" placeholder="Description" />
 
-        <select id="addStatus">
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select>
+      <select id="addStatus">
+        <option value="Available">Available</option>
+        <option value="Unavailable">Unavailable</option>
+      </select>
 
-        <div class="modal-buttons">
-            <button class="save-btn" onclick="confirmAddService()">Add</button>
-            <button class="cancel-btn" onclick="closeAddModal()">Cancel</button>
-        </div>
+      <div class="modal-buttons">
+        <button class="save-btn" onclick="addService()">Add</button>
+        <button class="cancel-btn" onclick="closeAddModal()">Cancel</button>
+      </div>
     </div>
-</div>
+  </div>
 
+  <!-- Service Details Modal -->
+  <div id="serviceModal" class="service-modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeServiceModal()">&times;</span>
 
-<script src="/FrontEnd/JS/provider-sidebar.js"></script>
-<script src="/FrontEnd/JS/provider/provider-servicepage.js"></script>
+      <h2>Service Details</h2>
+
+      <!-- Service info -->
+      <div id="serviceDetails">
+        <p><strong>ID:</strong> <span id="detailId"></span></p>
+        <p><strong>Name:</strong> <span id="detailName"></span></p>
+        <p><strong>Category:</strong> <span id="detailCategory"></span></p>
+        <p><strong>Price:</strong> LKR <span id="detailPrice"></span></p>
+        <p>
+          <strong>Description:</strong> <span id="detailDescription"></span>
+        </p>
+        <p><strong>Status:</strong> <span id="detailStatus"></span></p>
+      </div>
+
+      <!-- Action buttons -->
+    </div>
+  </div>
+  <!-- Input to fetch booking by ID -->
+  <div class="fetch-booking">
+    <input type="number" id="bookingIdInput" placeholder="Enter Booking ID" />
+  </div>
+
+  <script src="/FrontEnd/JS/provider-sidebar.js"></script>
+  <script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+  <script src="/FrontEnd/JS/provider/provider-servicepage.js"></script>
 </body>
+
 </html>

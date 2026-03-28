@@ -12,13 +12,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProviderAvailability {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String email;
+    @OneToOne
+    @JoinColumn(name = "provider_id", nullable = false, unique = true)
+    private User provider;
 
     @Enumerated(EnumType.STRING)
     private Availability availability;
-
 }

@@ -10,4 +10,9 @@ public interface ServicesService {
     List<ServiceResponseDto>getAllServices();
     ServiceResponseDto getServiceByID(int id);
     void deleteServiceByID(int id);
+    int countServicesByProviderId(int providerId);
+    List<ServiceResponseDto> getAllServicesByProviderId(int providerId);
+    ServiceResponseDto saveService(ServiceDto serviceDto);
+    ServiceResponseDto updateService(ServiceResponseDto serviceDto);
+    void deleteServiceById(int id);
 }

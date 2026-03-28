@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Service Provider | Dashboard</title>
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
     <!-- Sidebar -->
@@ -32,13 +34,13 @@
             <div class="stat-card">
                 <i class="fas fa-toolbox"></i>
                 <h2>Total Services</h2>
-                <p>8</p>
+                <p id="service-count">0</p>
             </div>
 
             <div class="stat-card">
                 <i class="fas fa-calendar-check"></i>
                 <h2>Total Bookings</h2>
-                <p>56</p>
+                <p id="total-bookings">0</p>
             </div>
 
             <div class="stat-card">
@@ -49,29 +51,34 @@
 
         </section>
 
-        <!-- ===== Recent Bookings ===== -->
-        <section class="recent">
-            <h3>Recent Bookings</h3>
+        <div class="booking-status-overview">
+            <h2>Booking Status Overview</h2>
 
-            <div class="booking-card">
-                <span>Home Cleaning</span>
-                <span>Michael</span>
-                <span class="status completed">Completed</span>
+            <div class="status-cards">
+                <div class="status-card pending">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>Pending</h3>
+                    <p id="pending-count">0</p>
+                </div>
+
+                <div class="status-card confirmed">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <h3>Confirmed</h3>
+                    <p id="confirmed-count">0</p>
+                </div>
+
+                <div class="status-card completed">
+                    <i class="fa-solid fa-check-double"></i>
+                    <h3>Completed</h3>
+                    <p id="completed-count">0</p>
+                </div>
+
+                <div class="status-card cancelled">
+                    <i class="fa-solid fa-ban"></i>
+                    <h3>Cancelled</h3>
+                    <p id="cancelled-count">0</p>
+                </div>
             </div>
-
-            <div class="booking-card">
-                <span>AC Repair</span>
-                <span>David</span>
-                <span class="status pending">Pending</span>
-            </div>
-
-            <div class="booking-card">
-                <span>Electrical Wiring</span>
-                <span>Chris</span>
-                <span class="status cancelled">Cancelled</span>
-            </div>
-
-        </section>
 
     </main>
 
@@ -93,8 +100,9 @@
     </div>
 
 
-<script src="/FrontEnd/JS/provider-sidebar.js"></script>
-<script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
-<script src="/FrontEnd/JS/provider/provider.homepage.js"></script>
+    <script src="/FrontEnd/JS/provider-sidebar.js"></script>
+    <script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+    <script src="/FrontEnd/JS/provider/provider.homepage.js"></script>
 </body>
+
 </html>

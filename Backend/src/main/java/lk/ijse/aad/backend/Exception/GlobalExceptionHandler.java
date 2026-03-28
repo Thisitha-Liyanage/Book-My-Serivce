@@ -4,6 +4,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import jdk.jshell.spi.ExecutionControl;
 import lk.ijse.aad.backend.Dto.AuthResponseDto;
 import lk.ijse.aad.backend.Exception.Custom.BookingNotFoundException;
+import lk.ijse.aad.backend.Exception.Custom.DuplicateServiceException;
 import lk.ijse.aad.backend.Exception.Custom.ServiceNotFoundEception;
 import lk.ijse.aad.backend.Util.APIResponse;
 import org.springframework.http.HttpStatus;
@@ -104,6 +105,14 @@ public class GlobalExceptionHandler {
         return new APIResponse(404 ,
                 "Booking not found" ,
                 "Booking Not found");
+    }
+
+    @ExceptionHandler(DuplicateServiceException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public APIResponse handleBookingFoundException(DuplicateServiceException e){
+        return new APIResponse(409 ,
+                "Service already found" ,
+                "Service already found");
     }
 }
 

@@ -23,7 +23,7 @@ public class BookingServiceImpl implements BookingService {
     ModelMapper modelMapper;
 
     @Override
-    public int conuntAllServices() {
+    public int countAllServices() {
         return (int) bookingRepo.count();
     }
 
@@ -52,7 +52,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public List<BookingResponseDto> getAllBookingsByProvider(int providerId) {
 
-        List<Booking> bookings = bookingRepo.findByServiceProviderId(providerId);
+        List<Booking> bookings = bookingRepo.findByService_Provider_Id(providerId);
 
         return bookings.stream()
                 .map(booking -> modelMapper.map(booking, BookingResponseDto.class))
@@ -66,5 +66,15 @@ public class BookingServiceImpl implements BookingService {
         if (updatedRaws <= 0) {
             throw new BookingNotFoundException("Booking not found");
         }
+    }
+
+    @Override
+    public int countByStatusAndServiceProviderId(Status status, int providerId) {
+        return bookingRepo.countByStatusAndService_Provider_Id(status, providerId);
+    }
+
+    @Override
+    public int countByProviderID(int providerId) {
+        return bookingRepo.countByService_Provider_Id(providerId);
     }
 }

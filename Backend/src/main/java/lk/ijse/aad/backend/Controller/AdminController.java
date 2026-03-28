@@ -72,7 +72,7 @@ public class AdminController {
     public ResponseEntity<APIResponse> getAllBookingCount(Authentication authentication) {
         String email = authentication.getName();
         userService.findUserByEmail(email);
-        return ResponseEntity.ok(new APIResponse(200 , "Admin found" , bookingService.conuntAllServices()
+        return ResponseEntity.ok(new APIResponse(200 , "Admin found" , bookingService.countAllServices()
                 ));
     }
 

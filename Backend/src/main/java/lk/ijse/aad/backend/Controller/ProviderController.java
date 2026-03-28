@@ -1,10 +1,14 @@
 package lk.ijse.aad.backend.Controller;
 
-import lk.ijse.aad.backend.Dto.BookingResponseDto;
-import lk.ijse.aad.backend.Dto.ProviderResponseDto;
-import lk.ijse.aad.backend.Dto.UserDto;
+import jakarta.validation.Valid;
+import lk.ijse.aad.backend.Dto.*;
+import lk.ijse.aad.backend.Entity.Availability;
+import lk.ijse.aad.backend.Entity.ProviderAvailability;
 import lk.ijse.aad.backend.Entity.Status;
+import lk.ijse.aad.backend.Entity.User;
+import lk.ijse.aad.backend.Service.AvailabilityService;
 import lk.ijse.aad.backend.Service.BookingService;
+import lk.ijse.aad.backend.Service.ServicesService;
 import lk.ijse.aad.backend.Service.UserService;
 import lk.ijse.aad.backend.Util.APIResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +16,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/provider")
@@ -23,6 +29,12 @@ public class ProviderController {
 
     @Autowired
     private BookingService bookingService;
+
+    @Autowired
+    private ServicesService servicesService;
+
+    @Autowired
+    private AvailabilityService availabilityService;
 
     @GetMapping("findProvider")
     public ResponseEntity<APIResponse> findProvider(Authentication authentication) {
@@ -68,5 +80,129 @@ public class ProviderController {
         Status newStatus = Status.valueOf(statusStr.toUpperCase());
         bookingService.updateStatus(id, newStatus);
         return ResponseEntity.ok(new APIResponse(200, "Status updated successfully", null));
+    }
+
+    @GetMapping("bookingOverview/{id}")
+    public ResponseEntity<APIResponse> getBookingOverview(
+            Authentication authentication,
+            @PathVariable int id) {
+        String email = authentication.getName();
+        userService.findProviderByEmail(email);
+
+        int pending = bookingService.countByStatusAndServiceProviderId(Status.PENDING , id);
+        int accepted = bookingService.countByStatusAndServiceProviderId(Status.ACCEPTED , id);
+        int completed = bookingService.countByStatusAndServiceProviderId(Status.COMPLETED , id);
+        int cancelled = bookingService.countByStatusAndServiceProviderId(Status.REJECTED , id);
+
+        Map<String, Integer> statusCounts = new HashMap<>();
+        statusCounts.put("pending", pending);
+        statusCounts.put("accepted", accepted);
+        statusCounts.put("completed", completed);
+        statusCounts.put("cancelled", cancelled);
+
+        return ResponseEntity.ok(new APIResponse(200 , "provider overview", statusCounts));
+    }
+
+
+    @GetMapping("serviceCount/{id}")
+    public ResponseEntity<APIResponse> getServiceCount(Authentication authentication
+    , @PathVariable int id
+    ) {
+        String email = authentication.getName();
+        userService.findProviderByEmail(email);
+        return ResponseEntity.ok(new APIResponse(200 , "provider found" ,
+                servicesService.countServicesByProviderId(id)));
+    }
+
+
+    @GetMapping("bookingCount/{id}")
+    public ResponseEntity<APIResponse> getBookingCount(
+            @PathVariable int id ,
+            Authentication authentication
+    ){
+        String email = authentication.getName();
+        userService.findProviderByEmail(email);
+
+        return ResponseEntity.ok(new APIResponse(200 , "provider found" ,
+                bookingService.countByProviderID(id)));
+    }
+
+    @GetMapping("getServices/{id}")
+    public ResponseEntity<APIResponse> getServices(
+            Authentication authentication,
+            @PathVariable int id
+    ){
+        String email = authentication.getName();
+        userService.findUserByEmail(email);
+
+        List<ServiceResponseDto> services = servicesService.getAllServicesByProviderId(id);
+
+        return ResponseEntity.ok(
+                new APIResponse(200, "Services Found", services)
+        );
+    }
+
+
+    @GetMapping("findServiceByID/{id}")
+    public ResponseEntity<APIResponse> findServiceByID(
+            @PathVariable int id,
+            Authentication authentication
+    ){
+        String email = authentication.getName();
+        userService.findProviderByEmail(email);
+
+        return ResponseEntity.ok(new APIResponse(200 , "service found" ,
+                servicesService.getServiceByID(id)));
+    }
+
+    @PostMapping("saveService")
+    public ResponseEntity<APIResponse> saveService(
+            Authentication authentication ,
+            @Valid @RequestBody ServiceDto dto
+    ){
+        String email = authentication.getName();
+        userService.findProviderByEmail(email);
+
+        System.out.println(dto.getProviderId());
+
+        ServiceResponseDto serviceResponseDto = servicesService.saveService(dto);
+        return ResponseEntity.ok(new APIResponse(200 ,
+                "service saved successfully", serviceResponseDto ));
+    }
+
+    @PutMapping("updateService")
+    public ResponseEntity<APIResponse> updateService(
+            Authentication authentication
+            , @Valid @RequestBody ServiceResponseDto dto
+    ){
+        String email = authentication.getName();
+        userService.findProviderByEmail(email);
+
+        ServiceResponseDto serviceResponseDto = servicesService.updateService(dto);
+        return ResponseEntity.ok(new APIResponse(200 ,
+                "service updated successfully", serviceResponseDto ));
+    }
+
+    @DeleteMapping("deleteService/{id}")
+    public ResponseEntity<APIResponse> deleteService(@PathVariable int id  , Authentication authentication) {
+        String email = authentication.getName();
+        userService.findProviderByEmail(email);
+        servicesService.deleteServiceByID(id);
+        return ResponseEntity.ok(new APIResponse(200 , "Service Found" , "Service deleted successfully"));
+
+    }
+
+
+    @PutMapping("/availability/{providerId}")
+    public ResponseEntity<?> updateAvailability(
+            @PathVariable int providerId,
+            Authentication authentication,
+            @RequestBody Map<String, String> body) {
+
+        String status = body.get("availability");
+
+        availabilityService.updateAvailability(authentication.getName(), status);
+
+        return ResponseEntity.ok("Availability updated successfully");
     }
 }
