@@ -1,5 +1,6 @@
 package lk.ijse.aad.backend.Service;
 
+import lk.ijse.aad.backend.Dto.CustomerBookingResponse;
 import lk.ijse.aad.backend.Dto.ServiceDto;
 import lk.ijse.aad.backend.Dto.ServiceResponseDto;
 
@@ -14,5 +15,6 @@ public interface ServicesService {
     List<ServiceResponseDto> getAllServicesByProviderId(int providerId);
     ServiceResponseDto saveService(ServiceDto serviceDto);
     ServiceResponseDto updateService(ServiceResponseDto serviceDto);
-    void deleteServiceById(int id);
+    CustomerBookingResponse getServiceAndProviderByID(int id);
+    List<CustomerBookingResponse> getSuggestedServicesByCity(String email);
 }

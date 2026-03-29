@@ -32,6 +32,7 @@ public class ServiceDto {
     @Min(value = 0, message = "Price must be positive")
     private Double price;
 
+
     @NotNull(message = "User ID is required")
     @Min(value = 1, message = "User ID must be a positive integer")
     private int providerId;

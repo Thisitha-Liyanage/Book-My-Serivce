@@ -2,25 +2,34 @@ package lk.ijse.aad.backend.Service.Impl;
 
 import jakarta.transaction.Transactional;
 import lk.ijse.aad.backend.Dto.BookingResponseDto;
+import lk.ijse.aad.backend.Dto.UserDto;
 import lk.ijse.aad.backend.Entity.Booking;
 import lk.ijse.aad.backend.Entity.Status;
+import lk.ijse.aad.backend.Entity.User;
 import lk.ijse.aad.backend.Exception.Custom.BookingNotFoundException;
 import lk.ijse.aad.backend.Repo.BookingRepo;
+import lk.ijse.aad.backend.Repo.*;
 import lk.ijse.aad.backend.Service.BookingService;
+import lk.ijse.aad.backend.Service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.spi.LocaleServiceProvider;
 
 @Service
 public class BookingServiceImpl implements BookingService {
     @Autowired
-    BookingRepo bookingRepo;
+    private BookingRepo bookingRepo;
 
     @Autowired
-    ModelMapper modelMapper;
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private UserRepo userRepo;
 
     @Override
     public int countAllServices() {
@@ -77,4 +86,30 @@ public class BookingServiceImpl implements BookingService {
     public int countByProviderID(int providerId) {
         return bookingRepo.countByService_Provider_Id(providerId);
     }
+
+    @Override
+    public List<BookingResponseDto> getBookingsByStatus(String email , List<Status> statuses) {
+
+        Optional<User> user = userRepo.findByEmail(email);
+        if(user.isEmpty()){
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        List<Booking> bookings = bookingRepo.findByStatusesAndUserId(
+                statuses, user.get().getId()
+        );
+
+        return bookings.stream()
+                .map(booking -> {
+                    BookingResponseDto dto = modelMapper.map(booking, BookingResponseDto.class);
+
+                    dto.setServiceId(booking.getService().getId());
+                    dto.setUserId(booking.getUser().getId());
+
+                    return dto;
+                })
+                .toList();
+    }
+
+
 }

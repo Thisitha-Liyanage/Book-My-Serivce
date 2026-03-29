@@ -1,5 +1,6 @@
 package lk.ijse.aad.backend.Repo;
 
+import lk.ijse.aad.backend.Entity.Availability;
 import lk.ijse.aad.backend.Entity.Services;
 import lk.ijse.aad.backend.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,4 +21,7 @@ public interface ServiceRepo extends JpaRepository<Services, Integer> {
     List<Services> findByTitleAndDescription(String title, String description);
 
     List<Services> findAllByTitleAndDescription(String title, String description);
+
+    List<Services> findByProvider_CityAndAvailability(String providerCity, Availability availability);
+
 }

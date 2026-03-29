@@ -15,17 +15,18 @@ import java.util.List;
 public interface BookingRepo extends JpaRepository<Booking, Integer> {
 
     int countByStatus(Status status);
-
     List<Booking> findByService_Provider_Id(int providerId);
 
     @Transactional
     @Modifying
     @Query("UPDATE Booking b SET b.status = :status WHERE b.id = :id")
     int updateBookingStatus(@Param("id") int id, @Param("status") Status status);
-
-    // ✅ FIXED
     int countByStatusAndService_Provider_Id(Status status, int providerId);
-
-    // ✅ THIS IS CORRECT
     int countByService_Provider_Id(int providerId);
+
+    @Query("SELECT b FROM Booking b WHERE b.status IN :statuses AND b.user.id = :userId")
+    List<Booking> findByStatusesAndUserId(@Param("statuses") List<Status> statuses, @Param("userId") int userId);
+
+
+
 }

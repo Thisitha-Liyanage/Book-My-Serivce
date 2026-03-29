@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Booking</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-addbookingpage.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="icon" href="/FrontEnd/Assest/logo.png">
+<link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+
+</head>
+<body>
+
+    <div id="sidebar"></div>
+
+<div class="booking-container">
+    <div class="booking-card">
+
+        <div class="booking-header">
+            <h2>Book Service</h2>
+        </div>
+
+        <div class="booking-form">
+
+            <div class="form-group">
+                <label>Service Title</label>
+                <input type="text" id="serviceTitle" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Provider Name</label>
+                <input type="text" id="providerName" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" id="category" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" id="city" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="bookingDate">
+            </div>
+
+            <div class="form-group">
+                <label>Time</label>
+                <input type="time" id="bookingTime">
+            </div>
+
+        </div>
+
+        <div class="booking-actions">
+            <button class="book-btn" id="bookBtn">
+                <i class="fa fa-check"></i> Book Now
+            </button>
+
+            <button class="close-btn" onclick="window.history.back()">
+                <i class="fa fa-times"></i> Close
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+<script src="/FrontEnd/JS/customer/add-booking.js"></script>
+<script src="/FrontEnd/JS/sidebar.js"></script>
+
+</body>
+</html>
