@@ -40,7 +40,7 @@ public class EMailService {
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(toEmail);
         helper.setSubject("New Booking Request");
-        helper.setText(htmlMsg, true); // true = HTML
+        helper.setText(htmlMsg, true);
 
         mailSender.send(message);
     }

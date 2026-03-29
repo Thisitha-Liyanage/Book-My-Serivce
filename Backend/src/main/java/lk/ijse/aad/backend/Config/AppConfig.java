@@ -54,7 +54,7 @@ public class AppConfig {
         mailSender.setPort(587);
 
         mailSender.setUsername("thisithaliyanage@gmail.com"); // your email
-        mailSender.setPassword("jrxf ojam rfgw uopt");    // app password if using Gmail
+        mailSender.setPassword("######");    // app password if using Gmail
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
