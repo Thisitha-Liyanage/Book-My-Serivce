@@ -31,8 +31,4 @@ public class BookingDto {
     @NotNull(message = "Service ID is required")
     @Positive(message = "Service ID must be greater than 0")
     private int serviceId;
-
-    @NotNull(message = "Customer ID is required")
-    @Positive(message = "Customer ID must be greater than 0")
-    private int userId;
 }

@@ -79,6 +79,12 @@ $(document).ready(function () {
     }
 
 });
+
+
+$(document).on("click", ".new-booking", function () {
+    window.location.href = "/FrontEnd/pages/customer/customer-service-page.html";
+});
+
     // // ❌ Cancel button (optional)
     // $(document).on("click", ".cancel", function () {
     //     const bookingId = $(this).data("id");

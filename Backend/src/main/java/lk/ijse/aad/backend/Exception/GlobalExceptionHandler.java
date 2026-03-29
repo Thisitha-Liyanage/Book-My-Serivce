@@ -9,6 +9,7 @@ import lk.ijse.aad.backend.Exception.Custom.ServiceNotFoundEception;
 import lk.ijse.aad.backend.Util.APIResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSendException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.ott.InvalidOneTimeTokenException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -113,6 +114,14 @@ public class GlobalExceptionHandler {
         return new APIResponse(409 ,
                 "Service already found" ,
                 "Service already found");
+    }
+
+    @ExceptionHandler(MailSendException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public APIResponse handleBookingFoundException(MailSendException e){
+        return new APIResponse(500 ,
+                "Mail sent error" ,
+                "Mail sent error");
     }
 }
 

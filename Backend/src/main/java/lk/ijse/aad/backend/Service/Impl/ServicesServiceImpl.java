@@ -140,11 +140,14 @@ public class ServicesServiceImpl implements ServicesService {
         if (!services.isPresent()) {
             throw new ServiceNotFoundEception("Service Not Found");
         }
+        Services service = services.get();
         CustomerBookingResponse customerBookingResponse = new CustomerBookingResponse();
-        customerBookingResponse.setId(services.get().getId());
-        customerBookingResponse.setTitle(services.get().getTitle());
-        customerBookingResponse.setPrice(services.get().getPrice());
-        customerBookingResponse.setStatus(services.get().getAvailability().name());
+        customerBookingResponse.setId(service.getId());
+        customerBookingResponse.setTitle(service.getTitle());
+        customerBookingResponse.setPrice(service.getPrice());
+        customerBookingResponse.setCategory(service.getCategory().name());
+        customerBookingResponse.setDescription(service.getDescription());
+        customerBookingResponse.setStatus(service.getAvailability().name());
 
 
         Optional<User> user = userRepo.findById(services.get().getProvider().getId());
@@ -154,6 +157,9 @@ public class ServicesServiceImpl implements ServicesService {
         }
 
         customerBookingResponse.setProviderName(user.get().getName());
+        customerBookingResponse.setProviderPhone(user.get().getPhone());
+        customerBookingResponse.setProviderEmail(user.get().getEmail());
+        customerBookingResponse.setProviderVillage(user.get().getCity());
         return customerBookingResponse;
     }
 
@@ -186,7 +192,7 @@ public class ServicesServiceImpl implements ServicesService {
                 response.setProviderName(provider.get().getName());
                 response.setProviderPhone(provider.get().getPhone());
                 response.setProviderEmail(provider.get().getEmail());
-                response.setProviderVillage(provider.get().getVillage());
+                response.setProviderVillage(provider.get().getCity());
             }
 
             Optional<ProviderAvailability> providerAvailability = availabilityRepo.findByProvider(service.getProvider());

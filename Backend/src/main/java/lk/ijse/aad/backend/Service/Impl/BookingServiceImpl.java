@@ -1,24 +1,27 @@
 package lk.ijse.aad.backend.Service.Impl;
 
+import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
+import lk.ijse.aad.backend.Dto.BookingDto;
 import lk.ijse.aad.backend.Dto.BookingResponseDto;
-import lk.ijse.aad.backend.Dto.UserDto;
 import lk.ijse.aad.backend.Entity.Booking;
+import lk.ijse.aad.backend.Entity.Services;
 import lk.ijse.aad.backend.Entity.Status;
 import lk.ijse.aad.backend.Entity.User;
 import lk.ijse.aad.backend.Exception.Custom.BookingNotFoundException;
+import lk.ijse.aad.backend.Exception.Custom.ServiceNotFoundEception;
 import lk.ijse.aad.backend.Repo.BookingRepo;
 import lk.ijse.aad.backend.Repo.*;
 import lk.ijse.aad.backend.Service.BookingService;
-import lk.ijse.aad.backend.Service.UserService;
+import lk.ijse.aad.backend.Util.EMailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSendException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.spi.LocaleServiceProvider;
 
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -30,6 +33,12 @@ public class BookingServiceImpl implements BookingService {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private ServiceRepo serviceRepo;
+
+    @Autowired
+    private EMailService EMailService;
 
     @Override
     public int countAllServices() {
@@ -71,10 +80,29 @@ public class BookingServiceImpl implements BookingService {
     @Override
     @Transactional
     public void updateStatus(int bookingId , Status status) {
+        Booking booking = bookingRepo.findById(bookingId).get();
+        if(booking == null){
+            throw new BookingNotFoundException("Booking not found");
+        }
+
         int updatedRaws = bookingRepo.updateBookingStatus(bookingId , status);
         if (updatedRaws <= 0) {
             throw new BookingNotFoundException("Booking not found");
         }
+
+        Optional<User> user = userRepo.findById(booking.getUser().getId());
+        if(user.isEmpty()){
+            throw new UsernameNotFoundException("User Not Found");
+        }
+
+        try{
+            EMailService.sendBookingStatusToCustomer(user.get().getEmail(), booking.getService().
+                            getProvider().getName(),
+                    String.valueOf(status));
+        }catch (MessagingException e){
+            throw new MailSendException("Mail Not Sent");
+        }
+
     }
 
     @Override
@@ -109,6 +137,35 @@ public class BookingServiceImpl implements BookingService {
                     return dto;
                 })
                 .toList();
+    }
+
+    @Override
+    public void AddBooking(String email, BookingDto bookingDto) {
+        Optional<User> user = userRepo.findByEmail(email);
+        if(user.isEmpty()){
+            throw new UsernameNotFoundException("User not found");
+        }
+        Booking booking = modelMapper.map(bookingDto, Booking.class);
+        booking.setUser(user.get());
+        booking.setId(0);
+
+        Services service = serviceRepo.findById(bookingDto.getServiceId())
+                .orElseThrow(() -> new ServiceNotFoundEception("Service not found"));
+        booking.setService(service);
+
+
+        Booking savedBooking = bookingRepo.save(booking);
+        if (savedBooking == null) {
+            throw new BookingNotFoundException("Booking not found");
+        }
+
+        try{
+            EMailService.sendBookingActionEmail(service.getProvider().getEmail(),
+                    service.getProvider().getName()
+                    , String.valueOf(savedBooking.getId()) , user.get());
+        } catch (MessagingException e) {
+            throw new MailSendException("Mail sent error");
+        }
     }
 
 

@@ -13,9 +13,20 @@ $(document).ready(function () {
         headers: { "Authorization": "Bearer " + token },
         success: function (response) {
             console.log(response)
-            const bookings = response.data; 
+            const bookings = response.data;
             const container = $(".history-list");
             container.empty();
+
+            // ✅ CHECK IF EMPTY
+            if (!bookings || bookings.length === 0) {
+                container.html(`
+        <div class="empty-history">
+            <h2>No Booking History</h2>
+            <p>You haven’t made any bookings yet.</p>
+        </div>
+    `);
+                return; // stop further execution
+            }
 
             // Loop over each booking and make second GET
             bookings.forEach(booking => {
@@ -26,7 +37,7 @@ $(document).ready(function () {
                     success: function (customerBookings) {
                         console.log(customerBookings)
                         const customerBooking = customerBookings.data;
-                        console.log() 
+                        console.log()
                         // customerBooking is CustomerBookingResponse
                         const card = `
                             <div class="history-card">
@@ -60,7 +71,7 @@ $(document).ready(function () {
     // HELPER FUNCTIONS
     function formatDate(dateStr) {
         const date = new Date(dateStr);
-        return `${String(date.getDate()).padStart(2,'0')}-${String(date.getMonth()+1).padStart(2,'0')}-${date.getFullYear()}`;
+        return `${String(date.getDate()).padStart(2, '0')}-${String(date.getMonth() + 1).padStart(2, '0')}-${date.getFullYear()}`;
     }
 
     function formatTime(timeStr) {
@@ -74,6 +85,6 @@ $(document).ready(function () {
     // Book again button
     $(document).on("click", ".book-again", function () {
         const serviceId = $(this).data("service-id");
-        window.location.href = `/FrontEnd/Pages/customer-book-service.html?serviceId=${serviceId}`;
+        window.location.href = `/FrontEnd/Pages/customer/customer-addbookingpage.html?serviceId=${serviceId}`;
     });
 });

@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
+import java.util.Properties;
 
 @Configuration
 @RequiredArgsConstructor
@@ -40,5 +43,25 @@ public class AppConfig {
                 ))
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found"));
+    }
+
+    @Bean
+    public JavaMailSender mailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+
+        // Configure your SMTP settings
+        mailSender.setHost("smtp.gmail.com");       // replace with your mail host
+        mailSender.setPort(587);
+
+        mailSender.setUsername("thisithaliyanage@gmail.com"); // your email
+        mailSender.setPassword("jrxf ojam rfgw uopt");    // app password if using Gmail
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
+
+        return mailSender;
     }
 }

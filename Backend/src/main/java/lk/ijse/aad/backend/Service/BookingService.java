@@ -1,5 +1,6 @@
 package lk.ijse.aad.backend.Service;
 
+import lk.ijse.aad.backend.Dto.BookingDto;
 import lk.ijse.aad.backend.Dto.BookingResponseDto;
 import lk.ijse.aad.backend.Entity.Status;
 
@@ -15,5 +16,6 @@ public interface BookingService {
     int countByStatusAndServiceProviderId(Status status, int providerId);
     int countByProviderID(int providerId);
     List<BookingResponseDto> getBookingsByStatus(String email , List<Status> statuses);
+    void AddBooking(String email , BookingDto bookingDto);
 
 }

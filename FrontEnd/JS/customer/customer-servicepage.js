@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     const token = localStorage.getItem("token");
 
@@ -17,7 +17,7 @@ $(document).ready(function() {
             headers: {
                 "Authorization": "Bearer " + token
             },
-            success: function(response) {
+            success: function (response) {
                 const services = response.data;
                 const container = $(".service-grid");
                 console.log(services)
@@ -57,13 +57,13 @@ $(document).ready(function() {
                 });
 
                 // Optional: handle book button click
-                $(".book-btn").click(function() {
+                $(".book-btn").click(function () {
                     const serviceId = $(this).data("service-id");
                     console.log("Book clicked for service ID:", serviceId);
                     // redirect or open booking modal
                 });
             },
-            error: function(xhr) {
+            error: function (xhr) {
                 console.error("Error loading services:", xhr.responseText);
                 if (xhr.status === 401 || xhr.status === 403) {
                     alert("Session expired. Please login again.");
@@ -73,6 +73,12 @@ $(document).ready(function() {
             }
         });
     }
+    $(document).on("click", ".book-btn", function () {
+        const serviceId = $(this).data("service-id");
+
+        window.location.href = `/FrontEnd/Pages/customer/customer-addbookingpage.html?serviceId=${serviceId}`;
+    });
+
 
     // // Optional: search filter
     // $(".search-bar").on("input", function() {
