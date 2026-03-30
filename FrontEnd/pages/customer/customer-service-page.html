@@ -1,143 +1,169 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Find Services 🔍</title>
-    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-service-page.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png">
-    <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="/FrontEnd/CSS/customer/customer-service-page.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png" />
+    <link
+      rel="stylesheet"
+      href="/FrontEnd/CSS/customer/customer-home-page.css"
+    />
+  </head>
+  <body>
     <div id="sidebar"></div>
-    
+
     <section id="services-section">
-        <h1 class="page-title">All Services</h1>
+      <h1 class="page-title">All Services</h1>
 
-        <input type="text" class="search-bar" placeholder="Search for service category">
+      <div class="category-filter">
+        <select class="category-select" id="categorySelect">
+          <option value="HOME_AND_TECHNICAL_SERVICE">
+            Home and Technical service
+          </option>
+          <option value="VEHICLE_SERVICE">Vehicle service</option>
+          <option value="IT_AND_DIGITAL_SERVICE">IT and digital service</option>
+          <option value="BEAUTY_AND_PERSONAL_CARE">
+            Beauty and presonal service
+          </option>
+          <option value="HEALTH_AND_WELLNESS">
+            Health and Wellness service
+          </option>
+          <option value="FOOD_SERVICE">Food service</option>
+          <option value="EVENT_AND_MEDIA">Event and Media service</option>
+          <option value="PROFESSIONAL_SERVICE">Professional service</option>
+          <!-- Add more options dynamically if needed -->
+        </select>
+        <button class="category-btn" id="filterBtn">Filter</button>
+      </div>
 
-        <div class="service-grid">
-
+      <div class="service-grid">
         <!-- CARD -->
         <div class="service-card">
-            <div class="card-inner">
-
-                <!-- FRONT -->
-                <div class="card-front">
-                    <h3>Electrician</h3>
-                    <p><strong>Name:</strong> Alex</p>
-                    <p><strong>District:</strong> Galle</p>
-                    <p class="desc">Friendly & professional service</p>
-                    <span class="price">Rs. 2500</span>
-                </div>
-
-                <!-- BACK -->
-                <div class="card-back">
-                    <button class="book-btn">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        Book Now
-                    </button>
-                </div>
-
+          <div class="card-inner">
+            <!-- FRONT -->
+            <div class="card-front">
+              <h3>Electrician</h3>
+              <p><strong>Name:</strong> Alex</p>
+              <p><strong>District:</strong> Galle</p>
+              <p class="desc">Friendly & professional service</p>
+              <span class="price">Rs. 2500</span>
             </div>
-        </div>
 
-         <div class="service-card">
-            <div class="card-inner">
-
-                <!-- FRONT -->
-                <div class="card-front">
-                    <h3>Electrician</h3>
-                    <p><strong>Name:</strong> Alex</p>
-                    <p><strong>District:</strong> Galle</p>
-                    <p class="desc">Friendly & professional service</p>
-                    <span class="price">Rs. 2500</span>
-                </div>
-
-                <!-- BACK -->
-                <div class="card-back">
-                    <button class="book-btn">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        Book Now
-                    </button>
-                </div>
-
+            <!-- BACK -->
+            <div class="card-back">
+              <button class="book-btn">
+                <i class="fa-solid fa-calendar-check"></i>
+                Book Now
+              </button>
             </div>
+          </div>
         </div>
 
-         <div class="service-card">
-            <div class="card-inner">
-
-                <!-- FRONT -->
-                <div class="card-front">
-                    <h3>Electrician</h3>
-                    <p><strong>Name:</strong> Alex</p>
-                    <p><strong>District:</strong> Galle</p>
-                    <p class="desc">Friendly & professional service</p>
-                    <span class="price">Rs. 2500</span>
-                </div>
-
-                <!-- BACK -->
-                <div class="card-back">
-                    <button class="book-btn">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        Book Now
-                    </button>
-                </div>
-
+        <div class="service-card">
+          <div class="card-inner">
+            <!-- FRONT -->
+            <div class="card-front">
+              <h3>Electrician</h3>
+              <p><strong>Name:</strong> Alex</p>
+              <p><strong>District:</strong> Galle</p>
+              <p class="desc">Friendly & professional service</p>
+              <span class="price">Rs. 2500</span>
             </div>
-        </div>
 
-         <div class="service-card">
-            <div class="card-inner">
-
-                <!-- FRONT -->
-                <div class="card-front">
-                    <h3>Electrician</h3>
-                    <p><strong>Name:</strong> Alex</p>
-                    <p><strong>District:</strong> Galle</p>
-                    <p class="desc">Friendly & professional service</p>
-                    <span class="price">Rs. 2500</span>
-                </div>
-
-                <!-- BACK -->
-                <div class="card-back">
-                    <button class="book-btn">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        Book Now
-                    </button>
-                </div>
-
+            <!-- BACK -->
+            <div class="card-back">
+              <button class="book-btn">
+                <i class="fa-solid fa-calendar-check"></i>
+                Book Now
+              </button>
             </div>
+          </div>
         </div>
 
-         <div class="service-card">
-            <div class="card-inner">
-
-                <!-- FRONT -->
-                <div class="card-front">
-                    <h3>Electrician</h3>
-                    <p><strong>Name:</strong> Alex</p>
-                    <p><strong>District:</strong> Galle</p>
-                    <p class="desc">Friendly & professional service</p>
-                    <span class="price">Rs. 2500</span>
-                </div>
-
-                <!-- BACK -->
-                <div class="card-back">
-                    <button class="book-btn">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        Book Now
-                    </button>
-                </div>
-
+        <div class="service-card">
+          <div class="card-inner">
+            <!-- FRONT -->
+            <div class="card-front">
+              <h3>Electrician</h3>
+              <p><strong>Name:</strong> Alex</p>
+              <p><strong>District:</strong> Galle</p>
+              <p class="desc">Friendly & professional service</p>
+              <span class="price">Rs. 2500</span>
             </div>
+
+            <!-- BACK -->
+            <div class="card-back">
+              <button class="book-btn">
+                <i class="fa-solid fa-calendar-check"></i>
+                Book Now
+              </button>
+            </div>
+          </div>
         </div>
+
+        <div class="service-card">
+          <div class="card-inner">
+            <!-- FRONT -->
+            <div class="card-front">
+              <h3>Electrician</h3>
+              <p><strong>Name:</strong> Alex</p>
+              <p><strong>District:</strong> Galle</p>
+              <p class="desc">Friendly & professional service</p>
+              <span class="price">Rs. 2500</span>
+            </div>
+
+            <!-- BACK -->
+            <div class="card-back">
+              <button class="book-btn">
+                <i class="fa-solid fa-calendar-check"></i>
+                Book Now
+              </button>
+            </div>
+          </div>
         </div>
+
+        <div class="service-card">
+          <div class="card-inner">
+            <!-- FRONT -->
+            <div class="card-front">
+              <h3>Electrician</h3>
+              <p><strong>Name:</strong> Alex</p>
+              <p><strong>District:</strong> Galle</p>
+              <p class="desc">Friendly & professional service</p>
+              <span class="price">Rs. 2500</span>
+            </div>
+
+            <!-- BACK -->
+            <div class="card-back">
+              <button class="book-btn">
+                <i class="fa-solid fa-calendar-check"></i>
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ratingModal" class="rating-modal">
+        <div class="rating-modal-content">
+          <span class="close-modal">&times;</span>
+          <h2>Service Ratings ⭐</h2>
+
+          <div id="ratingList"></div>
+        </div>
+      </div>
     </section>
     <script src="/FrontEnd/JS/sidebar.js"></script>
     <script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
     <script src="/FrontEnd/JS/customer/customer-servicepage.js"></script>
-</body>
+  </body>
 </html>

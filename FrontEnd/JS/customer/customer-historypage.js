@@ -50,6 +50,9 @@ $(document).ready(function () {
                                 </div>
                                 <div class="history-actions">
                                     <span class="status ${customerBooking.status.toLowerCase()}">${customerBooking.status}</span>
+                                    <button class="submit-rating" data-service-id="${booking.serviceId}">
+                                        Submit Rating
+                                    </button>
                                     <button class="book-again" data-service-id="${booking.serviceId}">Book Again</button>
                                 </div>
                             </div>
@@ -87,4 +90,12 @@ $(document).ready(function () {
         const serviceId = $(this).data("service-id");
         window.location.href = `/FrontEnd/Pages/customer/customer-addbookingpage.html?serviceId=${serviceId}`;
     });
+});
+
+$(document).on("click", ".submit-rating", function () {
+    const serviceId = $(this).data("service-id");
+
+    console.log("Redirect serviceId:", serviceId); // DEBUG
+
+    window.location.href = `/FrontEnd/Pages/customer/customer-ratingpage.html?serviceId=${serviceId}`;
 });

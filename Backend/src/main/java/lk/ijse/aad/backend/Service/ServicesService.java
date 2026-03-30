@@ -17,4 +17,5 @@ public interface ServicesService {
     ServiceResponseDto updateService(ServiceResponseDto serviceDto);
     CustomerBookingResponse getServiceAndProviderByID(int id);
     List<CustomerBookingResponse> getSuggestedServicesByCity(String email);
+    List<CustomerBookingResponse> getServiceByCategory(String email , String Category);
 }

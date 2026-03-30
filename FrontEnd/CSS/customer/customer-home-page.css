@@ -162,17 +162,18 @@ body {
 }
 
 .card {
-    background: #fff;
-    border-radius: 15px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f5);
+    border-radius: 20px;
     width: 280px;
     padding: 1.5rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: all 0.4s ease, transform 0.4s ease;
+    cursor: pointer;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 .card-header {
@@ -183,8 +184,8 @@ body {
 }
 
 .card-header .star {
-    font-size: 1.5rem;
-    color: #f5b50a;
+    font-size: 1.6rem;
+    color: #ffc107; /* golden star */
     transition: transform 0.6s ease;
 }
 
@@ -193,10 +194,14 @@ body {
 }
 
 .card-header h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #0E0927;
-    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #1B1464, #6A1B9A);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 12px;
 }
 
 /* ===== DETAILS ===== */

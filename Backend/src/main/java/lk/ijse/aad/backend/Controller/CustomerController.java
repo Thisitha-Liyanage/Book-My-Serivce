@@ -3,10 +3,12 @@ package lk.ijse.aad.backend.Controller;
 import jakarta.validation.Valid;
 import lk.ijse.aad.backend.Dto.BookingDto;
 import lk.ijse.aad.backend.Dto.BookingResponseDto;
+import lk.ijse.aad.backend.Dto.RatingDto;
 import lk.ijse.aad.backend.Dto.UserDto;
 import lk.ijse.aad.backend.Entity.Booking;
 import lk.ijse.aad.backend.Entity.Status;
 import lk.ijse.aad.backend.Service.BookingService;
+import lk.ijse.aad.backend.Service.RatingService;
 import lk.ijse.aad.backend.Service.ServicesService;
 import lk.ijse.aad.backend.Service.UserService;
 import lk.ijse.aad.backend.Util.APIResponse;
@@ -32,6 +34,9 @@ public class CustomerController {
 
     @Autowired
     private EMailService eMailService;
+
+    @Autowired
+    private RatingService ratingService;
 
     @GetMapping("foundCustomer")
     public ResponseEntity<APIResponse> getCustomer(
@@ -113,6 +118,52 @@ public class CustomerController {
     public ResponseEntity<?> rejectBooking(@PathVariable int bookingId) {
         bookingService.updateStatus(bookingId, Status.REJECTED);
         return ResponseEntity.ok(200 + "Booking Rejected");
+    }
+
+    @PostMapping("addRating")
+    public ResponseEntity<APIResponse> addRating(
+            Authentication authentication,
+            @RequestBody RatingDto ratingDto
+    ){
+        String username = authentication.getName();
+        userService.findUserByEmail(username);
+        ratingService.saveRating(ratingDto , username);
+        return ResponseEntity.ok(new APIResponse(200 , "customer found" , "rated successfully"));
+    }
+
+    @GetMapping("getRatingsByService/{id}")
+    public ResponseEntity<APIResponse> getRatingsByService(
+            Authentication authentication,
+            @PathVariable int id
+    ){
+        String username = authentication.getName();
+        userService.findUserByEmail(username);
+
+        return ResponseEntity.ok(new APIResponse(200 , "service found" ,
+                ratingService.getRatingByService(id , username)));
+    }
+
+    @GetMapping("getTopRatedServices")
+    public ResponseEntity<APIResponse> getTopRatedServices(
+            Authentication authentication
+    ){
+        String username = authentication.getName();
+        userService.findUserByEmail(username);
+
+        return ResponseEntity.ok(new APIResponse(200 , "services found" ,
+                ratingService.getTop3Services()));
+    }
+
+    @GetMapping("getServiceByCategory/{selectedCategory}")
+    public ResponseEntity<APIResponse> getServiceByCategory(
+            Authentication authentication,
+            @PathVariable String selectedCategory
+    ){
+        String email = authentication.getName();
+        userService.findUserByEmail(email);
+
+        return ResponseEntity.ok(new APIResponse(200 , "services found" ,
+                servicesService.getServiceByCategory(email , selectedCategory)));
     }
 
 }

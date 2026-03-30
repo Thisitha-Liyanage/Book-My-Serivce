@@ -122,3 +122,17 @@ section::-webkit-scrollbar-thumb:hover {
     color: #0f172a;
     border: 2px solid #0f172a;
 }
+
+.submit-rating {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.submit-rating:hover {
+    background: #218838;
+}

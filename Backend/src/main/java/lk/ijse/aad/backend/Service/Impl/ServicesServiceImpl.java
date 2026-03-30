@@ -205,5 +205,30 @@ public class ServicesServiceImpl implements ServicesService {
         return customerBookingResponses;
     }
 
+    @Override
+    public List<CustomerBookingResponse> getServiceByCategory( String email , String category) {
+        User user = userRepo.findByEmail(email).orElseThrow(
+                () -> new UsernameNotFoundException("User Not Found")
+        );
+        List<Services> services = serviceRepo.findAllByAvailabilityAndCategoryAndProvider_City(Availability.AVAILABLE ,
+                Category.valueOf(category) , user.getCity());
+
+        List<CustomerBookingResponse> customerBookingResponses = new ArrayList<>();
+        for (Services service : services) {
+            CustomerBookingResponse response = new CustomerBookingResponse();
+            response.setId(service.getId());
+            response.setTitle(service.getTitle());
+            response.setPrice(service.getPrice());
+            response.setCategory(service.getCategory().name());
+            response.setDescription(service.getDescription());
+            response.setProviderName(service.getProvider().getName());
+            response.setProviderVillage(service.getProvider().getCity());
+
+            customerBookingResponses.add(response);
+        }
+
+        return customerBookingResponses;
+    }
+
 
 }
