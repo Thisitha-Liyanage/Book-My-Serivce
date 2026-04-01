@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Provider Chat</title>
+  <link rel="stylesheet" href="/FrontEnd/CSS/prvider/provider-chatpage.css" />
+  <link rel="stylesheet" href="/FrontEnd/CSS/customer/customer-home-page.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/png" href="/FrontEnd/Assest/logo.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+  <div id="sidebar"></div>
+
+  <div class="chat-app">
+    <!-- LEFT: Customer List -->
+    <div class="chat-sidebar">
+      <h2>Chats</h2>
+      <div class="chat-user-list">
+        <!-- Customer list will be dynamically added here -->
+      </div>
+    </div>
+
+    <!-- RIGHT: Chat Area -->
+    <div class="chat-main">
+      <!-- Header -->
+      <div class="chat-header">
+        <h3 id="chatCustomerName">Customer Name</h3>
+        <p id="chatService">Service: ...</p>
+        <p id="chatPhone">Phone: ...</p>
+        <p id="chatCity">City: ...</p>
+        <p id="chatDate">Booking Date: ...</p>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-box" id="chatBox">
+        <!-- Messages will be dynamically loaded here -->
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- External JS -->
+  <script src="/FrontEnd/JS/provider/provider-chatpage.js"></script>
+  <script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+  <script src="/FrontEnd/JS/provider-sidebar.js"></script>
+</body>
+</html>

@@ -1,16 +1,11 @@
 package lk.ijse.aad.backend.Controller;
 
 import jakarta.validation.Valid;
-import lk.ijse.aad.backend.Dto.BookingDto;
-import lk.ijse.aad.backend.Dto.BookingResponseDto;
-import lk.ijse.aad.backend.Dto.RatingDto;
-import lk.ijse.aad.backend.Dto.UserDto;
+import lk.ijse.aad.backend.Dto.*;
+import lk.ijse.aad.backend.Dto.CustomerChatResponseDto;
 import lk.ijse.aad.backend.Entity.Booking;
 import lk.ijse.aad.backend.Entity.Status;
-import lk.ijse.aad.backend.Service.BookingService;
-import lk.ijse.aad.backend.Service.RatingService;
-import lk.ijse.aad.backend.Service.ServicesService;
-import lk.ijse.aad.backend.Service.UserService;
+import lk.ijse.aad.backend.Service.*;
 import lk.ijse.aad.backend.Util.APIResponse;
 import lk.ijse.aad.backend.Util.EMailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +32,9 @@ public class CustomerController {
 
     @Autowired
     private RatingService ratingService;
+
+    @Autowired
+    private ChatService chatService;
 
     @GetMapping("foundCustomer")
     public ResponseEntity<APIResponse> getCustomer(
@@ -164,6 +162,29 @@ public class CustomerController {
 
         return ResponseEntity.ok(new APIResponse(200 , "services found" ,
                 servicesService.getServiceByCategory(email , selectedCategory)));
+    }
+
+    @PostMapping("sendMassage")
+    public ResponseEntity<APIResponse> sendMassage(
+            Authentication authentication,
+            @RequestBody CustomerChatDto customerChatDto
+            ){
+        String username = authentication.getName();
+        userService.findUserByEmail(username);
+
+        chatService.sendMassageToProvider(username , customerChatDto);
+        return ResponseEntity.ok(new APIResponse(200 , "customer found" ,
+                "massage sent"));
+    }
+
+    @GetMapping("getFullChat/{id}")
+    public ResponseEntity<APIResponse> getFullChat(
+            Authentication authentication,
+            @PathVariable int id
+    ){
+        String username = authentication.getName();
+        userService.findUserByEmail(username);
+        return ResponseEntity.ok(new APIResponse(200 , "customer found" , chatService.getAllChats(id)));
     }
 
 }

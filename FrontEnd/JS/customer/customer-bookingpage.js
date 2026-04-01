@@ -37,7 +37,8 @@ $(document).ready(function () {
                             "Authorization": "Bearer " + token
                         },
                         success: function (res) {
-                            const data = res.data; // contains service + provider
+                            const data = res.data;
+                            console.log(res); // contains service + provider
                             const card = `
                                 <div class="booking-card">
                                     <div class="booking-info">
@@ -53,6 +54,7 @@ $(document).ready(function () {
                                         </span>
                                         <div class="buttons">
                                             <button class="cancel">Cancel</button>
+                                            <button class="chat-btn" onclick="goToChat(${booking.id}, ${data.providerId})">Send Message</button>
                                         </div>
                                     </div>
                                 </div>
@@ -84,6 +86,14 @@ $(document).ready(function () {
 $(document).on("click", ".new-booking", function () {
     window.location.href = "/FrontEnd/pages/customer/customer-service-page.html";
 });
+
+function goToChat(bookingId, providerId) {
+    localStorage.setItem("bookingId", bookingId);
+    localStorage.setItem("chatProviderId", providerId);
+
+    // Redirect to chat page
+    window.location.href = "/FrontEnd/pages/customer/customer-chatpage.html";
+}
 
     // // ❌ Cancel button (optional)
     // $(document).on("click", ".cancel", function () {

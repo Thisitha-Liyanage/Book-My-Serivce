@@ -40,6 +40,9 @@ public class UserServiceImpl implements UserService {
         User user = userRepo.findByEmail(loginDto.getEmail()).orElseThrow(
                 () -> new RuntimeException("Email not found")
         );
+
+
+
         if(!passwordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
             throw new BadCredentialsException("Wrong password");
         }

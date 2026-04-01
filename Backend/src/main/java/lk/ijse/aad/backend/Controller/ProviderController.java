@@ -2,14 +2,8 @@ package lk.ijse.aad.backend.Controller;
 
 import jakarta.validation.Valid;
 import lk.ijse.aad.backend.Dto.*;
-import lk.ijse.aad.backend.Entity.Availability;
-import lk.ijse.aad.backend.Entity.ProviderAvailability;
-import lk.ijse.aad.backend.Entity.Status;
-import lk.ijse.aad.backend.Entity.User;
-import lk.ijse.aad.backend.Service.AvailabilityService;
-import lk.ijse.aad.backend.Service.BookingService;
-import lk.ijse.aad.backend.Service.ServicesService;
-import lk.ijse.aad.backend.Service.UserService;
+import lk.ijse.aad.backend.Entity.*;
+import lk.ijse.aad.backend.Service.*;
 import lk.ijse.aad.backend.Util.APIResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +29,9 @@ public class ProviderController {
 
     @Autowired
     private AvailabilityService availabilityService;
+
+    @Autowired
+    private ChatService chatService;
 
     @GetMapping("findProvider")
     public ResponseEntity<APIResponse> findProvider(Authentication authentication) {
@@ -204,5 +201,28 @@ public class ProviderController {
         availabilityService.updateAvailability(authentication.getName(), status);
 
         return ResponseEntity.ok("Availability updated successfully");
+    }
+
+    @PostMapping("sendMassage")
+    public ResponseEntity<APIResponse> sendMassage(
+            Authentication authentication,
+            @RequestBody CustomerChatDto customerChatDto
+    ){
+        String username = authentication.getName();
+        userService.findUserByEmail(username);
+
+        chatService.sendMassageToProvider(username , customerChatDto);
+        return ResponseEntity.ok(new APIResponse(200 , "provider found" ,
+                "massage sent"));
+    }
+
+    @GetMapping("getMassages")
+    public ResponseEntity<APIResponse> getMassages(
+            Authentication authentication
+    ){
+        String username = authentication.getName();
+        userService.findUserByEmail(username);
+        return ResponseEntity.ok(new APIResponse(200 , "chat found"
+                , chatService.getAllProviderChats(username)));
     }
 }

@@ -22,6 +22,7 @@ public class CustomerBookingResponse {
     private String description;
     private String status;
     private String city;
+    private int providerId;
 
 
 }

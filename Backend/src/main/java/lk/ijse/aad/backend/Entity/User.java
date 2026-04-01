@@ -29,6 +29,7 @@ public class User {
     @Column(nullable = false , unique = true)
     private String phone;
 
+
     @Column(nullable = false)
     private String province;
 
@@ -51,6 +52,12 @@ public class User {
     // ratings given by customer
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ratings> givenRatings;
+
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Chat> sentChats;
+
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Chat> receivedChats;
 
 }
 

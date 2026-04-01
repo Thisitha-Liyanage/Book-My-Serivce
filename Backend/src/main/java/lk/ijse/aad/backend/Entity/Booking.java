@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -39,5 +40,8 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
     private Services service;
+
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Chat> chats;
 
 }

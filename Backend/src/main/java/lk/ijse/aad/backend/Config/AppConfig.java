@@ -43,6 +43,8 @@ public class AppConfig {
                 ))
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found"));
+
+
     }
 
     @Bean
@@ -50,11 +52,11 @@ public class AppConfig {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         // Configure your SMTP settings
-        mailSender.setHost("smtp.gmail.com");       // replace with your mail host
+        mailSender.setHost("smtp.gmail.com");    
         mailSender.setPort(587);
 
         mailSender.setUsername("thisithaliyanage@gmail.com");
-        mailSender.setPassword("#######");
+        mailSender.setPassword("#####");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

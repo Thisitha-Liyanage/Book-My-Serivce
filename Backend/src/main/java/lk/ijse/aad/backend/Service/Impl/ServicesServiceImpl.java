@@ -160,6 +160,7 @@ public class ServicesServiceImpl implements ServicesService {
         customerBookingResponse.setProviderPhone(user.get().getPhone());
         customerBookingResponse.setProviderEmail(user.get().getEmail());
         customerBookingResponse.setProviderVillage(user.get().getCity());
+        customerBookingResponse.setProviderId(user.get().getId());
         return customerBookingResponse;
     }
 

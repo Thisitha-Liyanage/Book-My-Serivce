@@ -125,3 +125,19 @@ button.cancel {
     border: 2px solid #0f172a;
     color: #0f172a;
 }
+
+.chat-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.chat-btn:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}

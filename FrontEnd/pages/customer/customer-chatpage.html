@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link rel="icon" href="/FrontEnd/Assest/logo.png" />
+    <link
+      rel="stylesheet"
+      href="/FrontEnd/CSS/customer/customer-chatpage.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/FrontEnd/CSS/customer/customer-home-page.css"
+    />
+  </head>
+  <body>
+    <div id="sidebar"></div>
+    <div class="chat-container">
+      <!-- Header -->
+      <div class="chat-header">
+        <h2 id="providerName">Provider Chat</h2>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-box" id="chatBox">
+        <div class="message sent">
+          <p>Message text</p>
+          <span>Time</span>
+        </div>
+
+        <div class="message received">
+          <p>Message text</p>
+          <span>Time</span>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+    <script src="/FrontEnd/JS/sidebar.js"></script>
+    <script src="/FrontEnd/JS/jquery-3.6.4.min.js"></script>
+    <script src="/FrontEnd/JS/customer/customer-chatpage.js"></script>
+  </body>
+</html>
