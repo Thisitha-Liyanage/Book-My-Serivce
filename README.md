@@ -106,3 +106,11 @@ The system includes **JWT authentication**, **role-based access (Admin, Customer
 
 ## Youtub Vedio
 Watch vedio -> https://www.youtube.com/watch?v=5Xgy8f5keC8
+
+
+--- 
+<img width="1920" height="872" alt="AD5" src="https://github.com/user-attachments/assets/4116fa06-b71f-4127-8ae3-75fe9dc63c63" />
+<img width="1920" height="867" alt="AD4" src="https://github.com/user-attachments/assets/63fac755-e160-440d-9054-0a16b3b5434f" />
+<img width="1920" height="867" alt="AD3" src="https://github.com/user-attachments/assets/00135242-ffc6-4282-85eb-024f7629d7d0" />
+<img width="1920" height="861" alt="AD2" src="https://github.com/user-attachments/assets/cabbf069-d010-414e-9159-dbfb70efd669" />
+<img width="1920" height="867" alt="AD1" src="https://github.com/user-attachments/assets/090c6898-ea1a-4edc-94fa-8aee76b0ab29" />
